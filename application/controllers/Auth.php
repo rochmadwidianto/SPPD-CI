@@ -1,4 +1,16 @@
 <?php
+/**
+* ================= doc ====================
+* FILENAME     : Auth.php
+* @package     : Auth
+* scope        : PUBLIC
+* @Created     : 2018-09-27
+* @Modified    : 2018-09-27
+* @Analysts    : Anggi Ayu Meidamara <meidamara@gmail.com>
+* @Author      : Rochmad Widianto <widiantorochmad@gmail.com>
+* @copyright   : Copyright (c) 2018
+* ================= doc ====================
+*/
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 

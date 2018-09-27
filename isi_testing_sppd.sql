@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.2 (64 bit)
-MySQL - 5.6.16 : Database - isi_testing_sppd
+SQLyog Ultimate v11.21 (64 bit)
+MySQL - 5.5.21 : Database - isi_testing_sppd
 *********************************************************************
 */
 
@@ -15,6 +15,29 @@ MySQL - 5.6.16 : Database - isi_testing_sppd
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`isi_testing_sppd` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `isi_testing_sppd`;
+
+/*Table structure for table `fin_rab_mst` */
+
+DROP TABLE IF EXISTS `fin_rab_mst`;
+
+CREATE TABLE `fin_rab_mst` (
+  `rabId` int(11) NOT NULL AUTO_INCREMENT,
+  `rabThnAnggId` int(11) NOT NULL,
+  `rabKode` varchar(50) DEFAULT NULL,
+  `rabNama` varchar(100) NOT NULL,
+  `rabKeterangan` text,
+  `rabNominalTotal` decimal(20,2) DEFAULT '0.00',
+  `rabTglInput` date DEFAULT NULL,
+  `rabTglUpdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `rabUserId` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`rabId`),
+  KEY `rab_thn_anggaran` (`rabThnAnggId`),
+  KEY `rab_user_id` (`rabUserId`),
+  CONSTRAINT `rab_thn_anggaran` FOREIGN KEY (`rabThnAnggId`) REFERENCES `ref_tahun_anggaran` (`thAnggaranId`) ON UPDATE CASCADE,
+  CONSTRAINT `rab_user_id` FOREIGN KEY (`rabUserId`) REFERENCES `tb_users` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `fin_rab_mst` */
 
 /*Table structure for table `ref_biaya_sbu` */
 
@@ -305,7 +328,7 @@ CREATE TABLE `tb_users` (
 
 /*Data for the table `tb_users` */
 
-insert  into `tb_users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$5OZGvY1omkAbPfGLY5sN3eHNA7SyP72hnJhjWWc1Dr0E5Igk33iiO','','admin@admin.com','86ed629d0fc67b65fa78a1f7b776dd9c56032abb',NULL,NULL,'G.WaoqYoZ/Zq6l6VddiHGe','0000-00-00 00:00:00','2018-09-27 04:38:19',1,'Administrator','utama','SPPD','0'),(7,'::1','member2','$2y$08$PR5Bshqw/ICo9/3X/9Sdn.DbdNP9D0efVQhpSxLfEEblKvbUV/DqG',NULL,'mara@gmail.com','073ac72599a6ffe3d2e31af2e804f448605f87ae',NULL,NULL,NULL,'2016-05-13 11:41:01','2016-05-20 11:30:08',0,'mara','andre','maracell','0898989'),(8,'::1','coba saja','$2y$08$rrhYyW215HV/K5WoH1E2CuH.6buDwe4EsQRYGyMqj641f6x15qm5q',NULL,'coba@gmail.com','219de4ce2713319e792fb6011ee6e2a87a88bd08',NULL,NULL,NULL,'2016-07-26 13:49:12',NULL,0,'coba','saja','coba saja',NULL);
+insert  into `tb_users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$5OZGvY1omkAbPfGLY5sN3eHNA7SyP72hnJhjWWc1Dr0E5Igk33iiO','','admin@admin.com','86ed629d0fc67b65fa78a1f7b776dd9c56032abb',NULL,NULL,'G.WaoqYoZ/Zq6l6VddiHGe','0000-00-00 00:00:00','2018-09-27 17:58:03',1,'Administrator','utama','SPPD','0'),(7,'::1','member2','$2y$08$PR5Bshqw/ICo9/3X/9Sdn.DbdNP9D0efVQhpSxLfEEblKvbUV/DqG',NULL,'mara@gmail.com','073ac72599a6ffe3d2e31af2e804f448605f87ae',NULL,NULL,NULL,'2016-05-13 11:41:01','2016-05-20 11:30:08',0,'mara','andre','maracell','0898989'),(8,'::1','coba saja','$2y$08$rrhYyW215HV/K5WoH1E2CuH.6buDwe4EsQRYGyMqj641f6x15qm5q',NULL,'coba@gmail.com','219de4ce2713319e792fb6011ee6e2a87a88bd08',NULL,NULL,NULL,'2016-07-26 13:49:12',NULL,0,'coba','saja','coba saja',NULL);
 
 /*Table structure for table `tb_users_groups` */
 

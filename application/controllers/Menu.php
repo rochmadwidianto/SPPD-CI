@@ -1,4 +1,18 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+/**
+* ================= doc ====================
+* FILENAME     : Menu.php
+* @package     : Menu
+* scope        : PUBLIC
+* @Created     : 2018-09-27
+* @Modified    : 2018-09-27
+* @Analysts    : Anggi Ayu Meidamara <meidamara@gmail.com>
+* @Author      : Rochmad Widianto <widiantorochmad@gmail.com>
+* @copyright   : Copyright (c) 2018
+* ================= doc ====================
+*/
+
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Menu extends CI_Controller{
     
