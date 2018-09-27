@@ -1,11 +1,11 @@
 <section class='content-header'>
     <h1>
-        Biaya SBU
+        Standar Biaya SBU
     </h1>
     <ol class='breadcrumb'>
         <li><a href='dashboard'><i class='fa fa-dashboard'></i>Home</a></li>
         <li><a href='#'><i class='fa fa-navicon'></i>Manajemen Referensi</a></li>
-        <li class='active'>Biaya SBU</li>
+        <li class='active'>Standar Biaya SBU</li>
     </ol>
 </section> 
 <!-- Main content -->

@@ -28,10 +28,7 @@
                       <dt>Nama</dt>
                       <dd><?php echo $makNama; ?></dd>
                     </dl>
-                    <dl class="dl-horizontal">
-                      <dt>Biaya SBU</dt>
-                      <dd><?php echo $makBiayaSbuId; ?></dd>
-                    </dl>
+                    
                   </div>
                   <!-- /.box-body -->
               <div class="box-footer">

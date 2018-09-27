@@ -1,11 +1,11 @@
 <section class='content-header'>
     <h1>
-        Golongan Pegawai
+        Sumber Dana
     </h1>
     <ol class='breadcrumb'>
         <li><a href='dashboard'><i class='fa fa-dashboard'></i>Home</a></li>
         <li><a href='#'><i class='fa fa-navicon'></i>Manajemen Referensi</a></li>
-        <li class='active'>Golongan Pegawai</li>
+        <li class='active'>Sumber Dana</li>
     </ol>
 </section> 
         <!-- Main content -->
@@ -15,9 +15,7 @@
               <div class='box'>
                 <div class='box-header with-border'>
                   <h3 class='box-title'>
-                   <!-- <?php echo anchor(site_url('golongan/pdf'), '<i class="fa fa-file-pdf-o"></i> PDF', 'class="btn btn-primary btn-sm"'); ?>
-                    <?php echo anchor(site_url('golongan/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?> -->
-                    <?php echo anchor('golongan/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?> 
+                   <?php echo anchor('sumberdana/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?> 
                     </h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
@@ -38,20 +36,20 @@
             	    <tbody>
                         <?php
                         $start = 0;
-                        foreach ($golongan_data as $golongan)
+                        foreach ($sumberdana_data as $sumberdana)
                         {
                             ?>
                             <tr>
             		    <td align="center"><?php echo ++$start ?></td>
-            		    <td><?php echo $golongan->golonganKode ?></td>
-            		    <td><?php echo $golongan->golonganNama ?></td>
+            		    <td><?php echo $sumberdana->sumberdanaKode ?></td>
+            		    <td><?php echo $sumberdana->sumberdanaNama ?></td>
             		    <td align="center" nowrap>
                 			<?php 
-                			echo anchor(site_url('golongan/read/'.$golongan->golonganId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
+                			echo anchor(site_url('sumberdana/read/'.$sumberdana->sumberdanaId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
                 			echo '  '; 
-                			echo anchor(site_url('golongan/update/'.$golongan->golonganId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle' => 'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
+                			echo anchor(site_url('sumberdana/update/'.$sumberdana->sumberdanaId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle' => 'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
                 			echo '  '; 
-                			echo anchor(site_url('golongan/delete/'.$golongan->golonganId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 
+                			echo anchor(site_url('sumberdana/delete/'.$sumberdana->sumberdanaId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 
                 			?>
             		    </td>
             	        </tr>

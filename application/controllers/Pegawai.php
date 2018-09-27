@@ -34,7 +34,7 @@ class Pegawai extends CI_Controller
 		'pegawaiNip' => $row->pegawaiNip,
 		'pegawaiNama' => $row->pegawaiNama,
 		'pegawaiPangkat' => $row->pegawaiPangkat,
-		'pegawaiJabatan' => $row->pegawaiJabatan,
+		'pegawaiJabatanId' => $row->pegawaiJabatanId,
 		'pegawaiGolonganId' => $row->pegawaiGolonganId,
 	    );
             $this->template->display('ref_pegawai/ref_pegawai_read', $data);
@@ -44,6 +44,7 @@ class Pegawai extends CI_Controller
         }
     }
 
+    //iki kan function tambah kan?
     public function create() 
     {
         $data = array(
@@ -54,12 +55,13 @@ class Pegawai extends CI_Controller
 	    'pegawaiNip' => set_value('pegawaiNip'),
 	    'pegawaiNama' => set_value('pegawaiNama'),
 	    'pegawaiPangkat' => set_value('pegawaiPangkat'),
-	    'pegawaiJabatan' => set_value('pegawaiJabatan'),
+	    'pegawaiJabatanId' => set_value('pegawaiJabatanId'),
 	    'pegawaiGolonganId' => set_value('pegawaiGolonganId'),
 	);
         $this->template->display('ref_pegawai/ref_pegawai_form', $data);
     }
     
+    //bedanya sama ini?
     public function create_action() 
     {
         $this->_rules();
@@ -71,7 +73,7 @@ class Pegawai extends CI_Controller
 		'pegawaiNip' => $this->input->post('pegawaiNip',TRUE),
 		'pegawaiNama' => $this->input->post('pegawaiNama',TRUE),
 		'pegawaiPangkat' => $this->input->post('pegawaiPangkat',TRUE),
-		'pegawaiJabatan' => $this->input->post('pegawaiJabatan',TRUE),
+		'pegawaiJabatanId' => $this->input->post('pegawaiJabatanId',TRUE),
 		'pegawaiGolonganId' => $this->input->post('pegawaiGolonganId',TRUE),
 	    );
 
@@ -94,7 +96,7 @@ class Pegawai extends CI_Controller
 		'pegawaiNip' => set_value('pegawaiNip', $row->pegawaiNip),
 		'pegawaiNama' => set_value('pegawaiNama', $row->pegawaiNama),
 		'pegawaiPangkat' => set_value('pegawaiPangkat', $row->pegawaiPangkat),
-		'pegawaiJabatan' => set_value('pegawaiJabatan', $row->pegawaiJabatan),
+		'pegawaiJabatanId' => set_value('pegawaiJabatanId', $row->pegawaiJabatanId),
 		'pegawaiGolonganId' => set_value('pegawaiGolonganId', $row->pegawaiGolonganId),
 	    );
             $this->template->display('ref_pegawai/ref_pegawai_form', $data);
@@ -115,7 +117,7 @@ class Pegawai extends CI_Controller
 		'pegawaiNip' => $this->input->post('pegawaiNip',TRUE),
 		'pegawaiNama' => $this->input->post('pegawaiNama',TRUE),
 		'pegawaiPangkat' => $this->input->post('pegawaiPangkat',TRUE),
-		'pegawaiJabatan' => $this->input->post('pegawaiJabatan',TRUE),
+		'pegawaiJabatanId' => $this->input->post('pegawaiJabatanId',TRUE),
 		'pegawaiGolonganId' => $this->input->post('pegawaiGolonganId',TRUE),
 	    );
 
@@ -144,7 +146,7 @@ class Pegawai extends CI_Controller
 	$this->form_validation->set_rules('pegawaiNip', 'pegawainip', 'trim|required');
 	$this->form_validation->set_rules('pegawaiNama', 'pegawainama', 'trim|required');
 	$this->form_validation->set_rules('pegawaiPangkat', 'pegawaipangkat', 'trim|required');
-	$this->form_validation->set_rules('pegawaiJabatan', 'pegawaijabatan', 'trim|required');
+	$this->form_validation->set_rules('pegawaiJabatanId', 'pegawaijabatanid', 'trim|required');
 	$this->form_validation->set_rules('pegawaiGolonganId', 'pegawaigolonganid', 'trim|required');
 
 	$this->form_validation->set_rules('pegawaiId', 'pegawaiId', 'trim');

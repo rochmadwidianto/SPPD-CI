@@ -10813,7 +10813,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Cari :",
+			"sSearch": "Search:", 
 	
 	
 			/**

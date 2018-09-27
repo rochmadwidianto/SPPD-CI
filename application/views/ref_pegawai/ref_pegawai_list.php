@@ -49,8 +49,9 @@
             		    <td><?php echo $pegawai->pegawaiNip ?></td>
             		    <td><?php echo $pegawai->pegawaiNama ?></td>
             		    <td><?php echo $pegawai->pegawaiPangkat ?></td>
-            		    <td><?php echo $pegawai->pegawaiJabatan ?></td>
-            		    <td><?php echo '<b>['.$pegawai->golonganKode.']</b>  '.$pegawai->golonganNama ?></td>
+                        <td><?php echo $pegawai->jabatanNama ?></td>
+                        <td><?php echo $pegawai->golonganNama ?></td>
+            		    <!--<td><?php echo '<b>['.$pegawai->golonganKode.']</b>  '.$pegawai->golonganNama ?></td> -->
             		    <td align="center" nowrap>
             			<?php 
             			echo anchor(site_url('pegawai/read/'.$pegawai->pegawaiId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 

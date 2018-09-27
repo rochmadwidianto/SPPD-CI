@@ -16,7 +16,8 @@ class Mak extends CI_Controller
 
     public function index()
     {
-        $mak = $this->MMak->get_all_query();
+        // $mak = $this->MMak->get_all_query();
+        $mak = $this->MMak->get_all();
 
         $data = array(
             'mak_data' => $mak
@@ -33,7 +34,7 @@ class Mak extends CI_Controller
 		'makId' => $row->makId,
 		'makKode' => $row->makKode,
 		'makNama' => $row->makNama,
-		'makBiayaSbuId' => $row->makBiayaSbuId,
+		
 	    );
             $this->template->display('ref_mak/ref_mak_read', $data);
         } else {
@@ -51,7 +52,6 @@ class Mak extends CI_Controller
 	    'makId' => set_value('makId'),
 	    'makKode' => set_value('makKode'),
 	    'makNama' => set_value('makNama'),
-	    'makBiayaSbuId' => set_value('makBiayaSbuId'),
 	);
         $this->template->display('ref_mak/ref_mak_form', $data);
     }
@@ -66,7 +66,6 @@ class Mak extends CI_Controller
             $data = array(
 		'makKode' => $this->input->post('makKode',TRUE),
 		'makNama' => $this->input->post('makNama',TRUE),
-		'makBiayaSbuId' => $this->input->post('makBiayaSbuId',TRUE),
 	    );
 
             $this->MMak->insert($data);
@@ -87,7 +86,7 @@ class Mak extends CI_Controller
 		'makId' => set_value('makId', $row->makId),
 		'makKode' => set_value('makKode', $row->makKode),
 		'makNama' => set_value('makNama', $row->makNama),
-		'makBiayaSbuId' => set_value('makBiayaSbuId', $row->makBiayaSbuId),
+		
 	    );
             $this->template->display('ref_mak/ref_mak_form', $data);
         } else {
@@ -106,7 +105,6 @@ class Mak extends CI_Controller
             $data = array(
 		'makKode' => $this->input->post('makKode',TRUE),
 		'makNama' => $this->input->post('makNama',TRUE),
-		'makBiayaSbuId' => $this->input->post('makBiayaSbuId',TRUE),
 	    );
 
             $this->MMak->update($this->input->post('makId', TRUE), $data);
@@ -133,8 +131,6 @@ class Mak extends CI_Controller
     {
 	$this->form_validation->set_rules('makKode', 'makkode', 'trim|required');
 	$this->form_validation->set_rules('makNama', 'maknama', 'trim|required');
-	$this->form_validation->set_rules('makBiayaSbuId', 'makbiayasbuid', 'trim|required');
-
 	$this->form_validation->set_rules('makId', 'makId', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
@@ -163,7 +159,6 @@ class Mak extends CI_Controller
         xlsWriteLabel($tablehead, $kolomhead++, "No");
 	xlsWriteLabel($tablehead, $kolomhead++, "MakKode");
 	xlsWriteLabel($tablehead, $kolomhead++, "MakNama");
-	xlsWriteLabel($tablehead, $kolomhead++, "MakBiayaSbuId");
 
 	foreach ($this->MMak->get_all() as $data) {
             $kolombody = 0;
@@ -172,7 +167,6 @@ class Mak extends CI_Controller
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->makKode);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->makNama);
-	    xlsWriteNumber($tablebody, $kolombody++, $data->makBiayaSbuId);
 
 	    $tablebody++;
             $nourut++;

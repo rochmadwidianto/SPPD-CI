@@ -1,6 +1,6 @@
 /*
-SQLyog Ultimate v11.21 (64 bit)
-MySQL - 5.5.21 : Database - isi_testing_sppd
+SQLyog Ultimate v11.2 (64 bit)
+MySQL - 5.6.16 : Database - isi_testing_sppd
 *********************************************************************
 */
 
@@ -46,6 +46,22 @@ CREATE TABLE `ref_golongan` (
 
 insert  into `ref_golongan`(`golonganId`,`golonganKode`,`golonganNama`) values (1,'GOL-001','Tetap'),(2,'GOL-002','Kontrak');
 
+/*Table structure for table `ref_jabatan` */
+
+DROP TABLE IF EXISTS `ref_jabatan`;
+
+CREATE TABLE `ref_jabatan` (
+  `jabatanId` int(11) NOT NULL AUTO_INCREMENT,
+  `jabatanKode` varchar(10) DEFAULT NULL,
+  `jabatanNama` varchar(100) DEFAULT NULL,
+  `jabatanKeterangan` text,
+  PRIMARY KEY (`jabatanId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ref_jabatan` */
+
+insert  into `ref_jabatan`(`jabatanId`,`jabatanKode`,`jabatanNama`,`jabatanKeterangan`) values (1,'1','Rektor','');
+
 /*Table structure for table `ref_jenis_transportasi` */
 
 DROP TABLE IF EXISTS `ref_jenis_transportasi`;
@@ -82,15 +98,12 @@ CREATE TABLE `ref_mak` (
   `makId` int(11) NOT NULL AUTO_INCREMENT,
   `makKode` varchar(50) DEFAULT NULL,
   `makNama` varchar(100) NOT NULL,
-  `makBiayaSbuId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`makId`),
-  KEY `mak_biaya_sbu` (`makBiayaSbuId`),
-  CONSTRAINT `mak_biaya_sbu` FOREIGN KEY (`makBiayaSbuId`) REFERENCES `ref_biaya_sbu` (`biayaSbuId`) ON UPDATE CASCADE
+  PRIMARY KEY (`makId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `ref_mak` */
 
-insert  into `ref_mak`(`makId`,`makKode`,`makNama`,`makBiayaSbuId`) values (1,'MAK-001','Belanja Peralatan IT',1),(2,'MAK-002','Biaya Perjalana Dinas',2);
+insert  into `ref_mak`(`makId`,`makKode`,`makNama`) values (1,'525111','Belanja Peralatan IT');
 
 /*Table structure for table `ref_pegawai` */
 
@@ -101,16 +114,34 @@ CREATE TABLE `ref_pegawai` (
   `pegawaiNip` varchar(50) DEFAULT NULL,
   `pegawaiNama` varchar(100) NOT NULL,
   `pegawaiPangkat` varchar(50) DEFAULT NULL,
+  `pegawaiJabatanId` int(11) DEFAULT NULL,
   `pegawaiJabatan` varchar(50) DEFAULT NULL,
   `pegawaiGolonganId` int(11) NOT NULL,
   PRIMARY KEY (`pegawaiId`),
   KEY `pegawai_golongan` (`pegawaiGolonganId`),
+  KEY `pegawai_jabatan_id` (`pegawaiJabatanId`),
+  CONSTRAINT `pegawai_jabatan_id` FOREIGN KEY (`pegawaiJabatanId`) REFERENCES `ref_jabatan` (`jabatanId`) ON UPDATE CASCADE,
   CONSTRAINT `pegawai_golongan` FOREIGN KEY (`pegawaiGolonganId`) REFERENCES `ref_golongan` (`golonganId`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `ref_pegawai` */
 
-insert  into `ref_pegawai`(`pegawaiId`,`pegawaiNip`,`pegawaiNama`,`pegawaiPangkat`,`pegawaiJabatan`,`pegawaiGolonganId`) values (1,'1234512414514','Rochmad Widianto','Junior','Web Developer',1);
+insert  into `ref_pegawai`(`pegawaiId`,`pegawaiNip`,`pegawaiNama`,`pegawaiPangkat`,`pegawaiJabatanId`,`pegawaiJabatan`,`pegawaiGolonganId`) values (2,'33741100920911','Anggi','III C',1,NULL,1);
+
+/*Table structure for table `ref_sumberdana` */
+
+DROP TABLE IF EXISTS `ref_sumberdana`;
+
+CREATE TABLE `ref_sumberdana` (
+  `sumberdanaId` int(11) NOT NULL AUTO_INCREMENT,
+  `sumberdanaKode` varchar(10) DEFAULT NULL,
+  `sumberdanaNama` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`sumberdanaId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ref_sumberdana` */
+
+insert  into `ref_sumberdana`(`sumberdanaId`,`sumberdanaKode`,`sumberdanaNama`) values (3,'001','BLU');
 
 /*Table structure for table `ref_tahun_anggaran` */
 
@@ -185,11 +216,11 @@ CREATE TABLE `tb_menu` (
   `role` enum('Administrator','Admin') DEFAULT 'Admin',
   `aktif` enum('Y','N') NOT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tb_menu` */
 
-insert  into `tb_menu`(`id_menu`,`nama_menu`,`icon`,`link`,`parent`,`role`,`aktif`) values (1,'Dashboard','fa fa-dashboard','dashboard',0,'Admin','Y'),(22,'Setting','fa fa-gears','#',0,'Administrator','Y'),(23,'Menu','fa  fa-bars text-aqua','menu',22,'Administrator','Y'),(24,'User','fa fa-users text-aqua','auth/member',22,'Administrator','Y'),(26,'Group User','fa  fa-bars text-aqua','groups',22,'Admin','Y'),(28,'Manajemen Referensi','fa fa-navicon','#',0,'Admin','Y'),(29,'Golongan Pegawai','fa fa-bookmark text-aqua','golongan',28,'Admin','Y'),(30,'Pegawai','fa fa-group text-aqua','pegawai',28,'Admin','Y'),(31,'Jenis Transportasi','fa fa-automobile text-aqua','jenisTransportasi',28,'Admin','Y'),(32,'Kota Tujuan','fa fa-map-marker text-aqua','kotaTujuan',28,'Admin','Y'),(33,'Manajemen Anggaran','fa fa-money','#',0,'Admin','Y'),(34,'Biaya SBU','fa fa-calculator text-aqua','biayaSbu',33,'Admin','Y'),(35,'Tahun Anggaran','fa fa-calendar text-aqua','TahunAnggaran',33,'Admin','Y'),(36,'Mata Anggaran Kegiatan','fa fa-book text-aqua','Mak',33,'Admin','Y'),(37,'Rencana Anggaran Belanja','fa fa-sticky-note text-aqua','Rab',33,'Admin','Y');
+insert  into `tb_menu`(`id_menu`,`nama_menu`,`icon`,`link`,`parent`,`role`,`aktif`) values (1,'Dashboard','fa fa-dashboard','dashboard',0,'Admin','Y'),(22,'Setting','fa fa-gears','#',0,'Administrator','Y'),(23,'Menu','fa  fa-bars text-aqua','menu',22,'Administrator','Y'),(24,'User','fa fa-users text-aqua','auth/member',22,'Administrator','Y'),(26,'Group User','fa  fa-bars text-aqua','groups',22,'Admin','Y'),(28,'Manajemen Referensi','fa fa-navicon','#',0,'Admin','Y'),(29,'Golongan Pegawai','fa fa-bookmark text-aqua','golongan',28,'Admin','Y'),(30,'Pegawai','fa fa-group text-aqua','pegawai',28,'Admin','Y'),(31,'Jenis Transportasi','fa fa-automobile text-aqua','jenisTransportasi',28,'Admin','Y'),(32,'Kota Tujuan','fa fa-map-marker text-aqua','kotaTujuan',28,'Admin','Y'),(33,'Manajemen Anggaran','fa fa-money','#',0,'Admin','Y'),(34,'Biaya SBU','fa fa-calculator text-aqua','biayaSbu',33,'Admin','Y'),(35,'Tahun Anggaran','fa fa-calendar text-aqua','TahunAnggaran',33,'Admin','Y'),(36,'Mata Anggaran Kegiatan','fa fa-book text-aqua','Mak',33,'Admin','Y'),(37,'Rencana Anggaran Belanja','fa fa-sticky-note text-aqua','Rab',33,'Admin','Y'),(38,'Jabatan','fa fa-user','jabatan',28,'Admin','Y'),(39,'Sumber Dana','fa fa-money','sumberdana',28,'Admin','Y');
 
 /*Table structure for table `tb_nominal` */
 
@@ -274,7 +305,7 @@ CREATE TABLE `tb_users` (
 
 /*Data for the table `tb_users` */
 
-insert  into `tb_users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$5OZGvY1omkAbPfGLY5sN3eHNA7SyP72hnJhjWWc1Dr0E5Igk33iiO','','admin@admin.com','86ed629d0fc67b65fa78a1f7b776dd9c56032abb',NULL,NULL,'G.WaoqYoZ/Zq6l6VddiHGe','0000-00-00 00:00:00','2018-09-25 03:59:05',1,'Administrator','utama','SPPD','0'),(7,'::1','member2','$2y$08$PR5Bshqw/ICo9/3X/9Sdn.DbdNP9D0efVQhpSxLfEEblKvbUV/DqG',NULL,'mara@gmail.com','073ac72599a6ffe3d2e31af2e804f448605f87ae',NULL,NULL,NULL,'2016-05-13 11:41:01','2016-05-20 11:30:08',0,'mara','andre','maracell','0898989'),(8,'::1','coba saja','$2y$08$rrhYyW215HV/K5WoH1E2CuH.6buDwe4EsQRYGyMqj641f6x15qm5q',NULL,'coba@gmail.com','219de4ce2713319e792fb6011ee6e2a87a88bd08',NULL,NULL,NULL,'2016-07-26 13:49:12',NULL,0,'coba','saja','coba saja',NULL);
+insert  into `tb_users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$5OZGvY1omkAbPfGLY5sN3eHNA7SyP72hnJhjWWc1Dr0E5Igk33iiO','','admin@admin.com','86ed629d0fc67b65fa78a1f7b776dd9c56032abb',NULL,NULL,'G.WaoqYoZ/Zq6l6VddiHGe','0000-00-00 00:00:00','2018-09-27 04:38:19',1,'Administrator','utama','SPPD','0'),(7,'::1','member2','$2y$08$PR5Bshqw/ICo9/3X/9Sdn.DbdNP9D0efVQhpSxLfEEblKvbUV/DqG',NULL,'mara@gmail.com','073ac72599a6ffe3d2e31af2e804f448605f87ae',NULL,NULL,NULL,'2016-05-13 11:41:01','2016-05-20 11:30:08',0,'mara','andre','maracell','0898989'),(8,'::1','coba saja','$2y$08$rrhYyW215HV/K5WoH1E2CuH.6buDwe4EsQRYGyMqj641f6x15qm5q',NULL,'coba@gmail.com','219de4ce2713319e792fb6011ee6e2a87a88bd08',NULL,NULL,NULL,'2016-07-26 13:49:12',NULL,0,'coba','saja','coba saja',NULL);
 
 /*Table structure for table `tb_users_groups` */
 

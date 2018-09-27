@@ -38,9 +38,12 @@
                       <input type="text" class="form-control" name="pegawaiPangkat" id="pegawaiPangkat" placeholder="Pangkat Pegawai" value="<?php echo $pegawaiPangkat; ?>" />
                     </div>
                     <div class="form-group">
-                      <label for="pegawaiJabatan">jabatan</label>
+                      <label for="pegawaiJabatan">Jabatan</label>
                       <?php echo form_error('pegawaiJabatan') ?>
-                      <input type="text" class="form-control" name="pegawaiJabatan" id="pegawaiJabatan" placeholder="Jabatan Pegawai" value="<?php echo $pegawaiJabatan; ?>" />
+                      <!-- cmb_dinamis($name,$table,$field,$pk,$selected) -->
+                      <!-- pegawaiJabatan : kalo ini field yg inputa (yg sebelumnya) -->
+                      <!-- pegawaiJabatanId : ini kan nama field yg berelasi -->
+                      <?php echo cmb_dinamis('pegawaiJabatanId', 'ref_jabatan', 'jabatanNama', 'jabatanId', $pegawaiJabatanId) ?>
                     </div>
                     <div class="form-group">
                       <label for="pegawaiGolonganId">Golongan</label>

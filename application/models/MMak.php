@@ -16,6 +16,7 @@ class MMak extends CI_Model
     }
 
     // get all
+    // pake ini aja
     function get_all()
     {
         $this->db->order_by($this->id, $this->order);
@@ -23,13 +24,14 @@ class MMak extends CI_Model
     }
 
     // gel all query
-    function get_all_query()
-    {
-        $sql = "SELECT mak.`makId`, mak.`makKode`, mak.`makNama`, sbu.`biayaSbuKode`, sbu.`biayaSbuNama`
-                FROM ref_mak AS mak, ref_biaya_sbu AS sbu
-                WHERE mak.`makBiayaSbuId` = sbu.`biayaSbuId`";
-        return $this->db->query($sql)->result();
-    }
+    // ini kemarin query tambahan krn ada custom, sekarang gak usah dipake
+    // function get_all_query()
+    // {
+    //     $sql = "SELECT mak.`makId`, mak.`makKode`, mak.`makNama`, sbu.`biayaSbuKode`, sbu.`biayaSbuNama`
+    //             FROM ref_mak AS mak, ref_biaya_sbu AS sbu
+    //             WHERE mak.`makBiayaSbuId` = sbu.`biayaSbuId`";
+    //     return $this->db->query($sql)->result();
+    // }
 
     // get data by id
     function get_by_id($id)
@@ -43,9 +45,9 @@ class MMak extends CI_Model
         $this->db->like('makId', $q);
 	$this->db->or_like('makKode', $q);
 	$this->db->or_like('makNama', $q);
-	$this->db->or_like('makBiayaSbuId', $q);
+	// $this->db->or_like('makBiayaSbuId', $q);
 	$this->db->from($this->table);
-        return $this->db->count_all_results();
+        return $this->drb->count_all_results();
     }
 
     // get data with limit and search
@@ -54,7 +56,7 @@ class MMak extends CI_Model
         $this->db->like('makId', $q);
 	$this->db->or_like('makKode', $q);
 	$this->db->or_like('makNama', $q);
-	$this->db->or_like('makBiayaSbuId', $q);
+	// $this->db->or_like('makBiayaSbuId', $q);
 	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

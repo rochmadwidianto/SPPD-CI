@@ -1,11 +1,11 @@
 <section class='content-header'>
     <h1>
-        Standar Biaya SBU
+        Jabatan
     </h1>
     <ol class='breadcrumb'>
         <li><a href='dashboard'><i class='fa fa-dashboard'></i>Home</a></li>
         <li><a href='#'><i class='fa fa-navicon'></i>Manajemen Referensi</a></li>
-        <li class='active'>Biaya SBU</li>
+        <li class='active'>Jabatan</li>
     </ol>
 </section> 
         <!-- Main content -->
@@ -15,9 +15,10 @@
               <div class='box'>
                 <div class='box-header with-border'>
                     <h3 class='box-title'>
-                		<?php echo anchor(site_url('biayasbu/pdf'), '<i class="fa fa-file-pdf-o"></i> PDF', 'class="btn btn-primary btn-sm"'); ?>  
-                        <?php echo anchor(site_url('biayasbu/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?>  
-                        <?php echo anchor('biayasbu/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?>
+                        <!-- (jabatan) ini nanti akan menajdi nama controllernya -->
+                		<?php echo anchor(site_url('jabatan/pdf'), '<i class="fa fa-file-pdf-o"></i> PDF', 'class="btn btn-primary btn-sm"'); ?>  
+                        <?php echo anchor(site_url('jabatan/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?>  
+                        <?php echo anchor('jabatan/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?>
                     </h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
@@ -32,26 +33,29 @@
                             <th width="40px">No</th>
                             <th width="250px">Kode</th>
                             <th>Nama</th>
+                            <th>Keterangan</th>
                             <th width="100px">Aksi</th>
                         </tr>
                     </thead>
             	    <tbody>
                         <?php
                         $start = 0;
-                        foreach ($biayasbu_data as $biayasbu)
+                        // $jabatan_data : ini juga diakses dari controller
+                        foreach ($jabatan_data as $jabatan)
                         {
                             ?>
                             <tr>
             		    <td align="center"><?php echo ++$start ?></td>
-            		    <td><?php echo $biayasbu->biayaSbuKode ?></td>
-            		    <td><?php echo $biayasbu->biayaSbuNama ?></td>
+            		    <td><?php echo $jabatan->jabatanKode ?></td>
+            		    <td><?php echo $jabatan->jabatanNama ?></td>
+                        <td><?php echo $jabatan->jabatanKeterangan?></td>
             		    <td align="center" nowrap>
             			<?php 
-            			echo anchor(site_url('biayasbu/read/'.$biayasbu->biayaSbuId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
+            			echo anchor(site_url('jabatan/read/'.$jabatan->jabatanId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
             			echo '  '; 
-            			echo anchor(site_url('biayasbu/update/'.$biayasbu->biayaSbuId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle' => 'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
+            			echo anchor(site_url('jabatan/update/'.$jabatan->jabatanId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle' => 'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
             			echo '  '; 
-            			echo anchor(site_url('biayasbu/delete/'.$biayasbu->biayaSbuId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 
+            			echo anchor(site_url('jabatan/delete/'.$jabatan->jabatanId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 
             			?>
             		    </td>
             	        </tr>

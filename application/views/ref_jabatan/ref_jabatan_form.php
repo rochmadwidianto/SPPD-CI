@@ -1,11 +1,11 @@
 <section class='content-header'>
     <h1>
-        Mata Anggaran Kegiatan
+        Jabatan
     </h1>
     <ol class='breadcrumb'>
         <li><a href='dashboard'><i class='fa fa-dashboard'></i>Home</a></li>
         <li><a href='#'><i class='fa fa-navicon'></i>Manajemen Referensi</a></li>
-        <li class='active'>Mata Anggaran Kegiatan</li>
+        <li class='active'>Jabatan</li>
     </ol>
 </section> 
 <!-- Main content -->
@@ -21,21 +21,24 @@
                 <form action="<?php echo $action; ?>" method="post">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="makKode">Kode</label>
-                      <?php echo form_error('makKode') ?>
-                      <input type="hidden" name="makId" value="<?php echo $makId; ?>" /> 
-                      <input type="text" class="form-control" name="makKode" id="makKode" placeholder="Kode MAK" value="<?php echo $makKode; ?>" />
+                      <label for="jabatanKode">Kode</label>
+                       <?php echo form_error('jabatanKode') ?>
+                      <input type="hidden" name="jabatanId" value="<?php echo $jabatanId; ?>" /> 
+                      <input type="text" class="form-control" name="jabatanKode" id="jabatanKode" placeholder="Kode Jabatan" value="<?php echo $jabatanKode; ?>" />
                     </div>
                     <div class="form-group">
-                      <label for="makNama">Nama</label>
-                      <?php echo form_error('makNama') ?>
-                      <input type="text" class="form-control" name="makNama" id="makNama" placeholder="Nama MAK" value="<?php echo $makNama; ?>" />
+                      <label for="jabatanNama">Nama</label>
+                      <input type="text" class="form-control" name="jabatanNama" id="jabatanNama" placeholder="Nama Jabatan" value="<?php echo $jabatanNama; ?>" />
+                    </div>
+                    <div class="form-group">
+                      <label for="jabatanKeterangan">Keterangan</label>
+                      <textarea class="form-control" name="jabatanKeterangan" id="jabatanKeterangan" placeholder="Keterangan" rows="2" cols="50"><?php echo $jabatanKeterangan;?><</textarea>
                     </div>
                   </div>
                   <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button> 
-                <a href="<?php echo site_url('mak') ?>" class="btn btn-warning"><i class="fa fa-reply-all"></i> Batal</a>
+                <a href="<?php echo site_url('biayasbu') ?>" class="btn btn-warning"><i class="fa fa-reply-all"></i> Batal</a>
               </div>
             </form>
           </div>

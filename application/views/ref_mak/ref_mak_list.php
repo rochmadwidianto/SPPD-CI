@@ -32,7 +32,6 @@
                             <th width="40px">No</th>
                 		    <th>Kode</th>
                 		    <th>Nama</th>
-                		    <th>Biaya SBU</th>
                 		    <th width="100px">Aksi</th>
                         </tr>
                     </thead>
@@ -46,9 +45,8 @@
             		    <td align="center"><?php echo ++$start ?></td>
             		    <td><?php echo $mak->makKode ?></td>
             		    <td><?php echo $mak->makNama ?></td>
-                        <td><?php echo '<b>['.$mak->biayaSbuKode.']</b>  '.$mak->biayaSbuNama ?></td>
-            		    <td align="center" nowrap>
-            			<?php 
+                        <td>
+                        <?php 
             			echo anchor(site_url('mak/read/'.$mak->makId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
             			echo '  '; 
             			echo anchor(site_url('mak/update/'.$mak->makId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle'=>'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 

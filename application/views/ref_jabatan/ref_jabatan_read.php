@@ -1,11 +1,11 @@
 <section class='content-header'>
     <h1>
-        Biaya SBU
+        Jabatan
     </h1>
     <ol class='breadcrumb'>
         <li><a href='dashboard'><i class='fa fa-dashboard'></i>Home</a></li>
         <li><a href='#'><i class='fa fa-navicon'></i>Manajemen Referensi</a></li>
-        <li class='active'>Biaya SBU</li>
+        <li class='active'>Jabatan</li>
     </ol>
 </section> 
 
@@ -22,21 +22,20 @@
                   <div class="box-body">
                     <dl class="dl-horizontal">
                       <dt>Kode</dt>
-                      <dd><?php echo $biayaSbuKode; ?></dd>
+                      <dd><?php echo $jabatanKode; ?></dd>
                     </dl>
                     <dl class="dl-horizontal">
                       <dt>Nama</dt>
-                      <dd><?php echo $biayaSbuNama; ?></dd>
+                      <dd><?php echo $jabatanNama; ?></dd>
                     </dl>
-                    <!--
                     <dl class="dl-horizontal">
-                      <dt>Biaya SBU</dt>
-                      <dd><?php echo $makBiayaSbuId; ?></dd>
-                    </dl> -->
+                      <dt>Keterangan</dt>
+                      <dd><?php echo $jabatanKeterangan; ?></dd>
+                    </dl>
                   </div>
                   <!-- /.box-body -->
               <div class="box-footer">
-                <a href="<?php echo site_url('biayasbu') ?>" class="btn btn-warning"><i class="fa fa-reply-all"></i> Kembali</a>
+                <a href="<?php echo site_url('jabatan') ?>" class="btn btn-warning"><i class="fa fa-reply-all"></i> Kembali</a>
               </div>
           </div>
           </div><!-- /.row -->
