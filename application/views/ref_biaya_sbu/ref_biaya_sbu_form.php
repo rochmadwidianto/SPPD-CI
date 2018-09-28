@@ -29,6 +29,16 @@
                       <label for="biayaSbuNama">Nama</label>
                       <input type="text" class="form-control" name="biayaSbuNama" id="biayaSbuNama" placeholder="Nama Biaya SBU" value="<?php echo $biayaSbuNama; ?>" />
                     </div>
+                    <div class="form-group">
+                      <label for="biayaSbuMakId">MAK</label>
+                      <?php echo form_error('biayaSbuMakId') ?>
+                      <?php echo cmb_dinamis('biayaSbuMakId', 'ref_mak', 'makNama', 'makId', $biayaSbuMakId) ?>
+                    </div>
+                    <div class="form-group">
+                      <label for="biayaSbuSumberdanaId">Sumber Dana</label>
+                      <?php echo form_error('biayaSbuSumberdanaId') ?>
+                      <?php echo cmb_dinamis('biayaSbuSumberdanaId', 'ref_sumberdana', 'sumberdanaNama', 'sumberdanaId', $biayaSbuSumberdanaId) ?>
+                    </div>
                   </div>
                   <!-- /.box-body -->
               <div class="box-footer">

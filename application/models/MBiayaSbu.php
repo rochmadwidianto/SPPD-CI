@@ -35,6 +35,21 @@ class MBiayaSbu extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    // gel all query
+    function get_all_query()
+    {
+        $sql = "SELECT sbu.`biayaSbuId`, sbu.`biayaSbuKode`, sbu.`biayaSbuNama`, mak.`makId`, mak.`makKode`, mak.`makNama`, sd.`sumberdanaId`, sd.`sumberdanaKode`, sd.`sumberdanaNama`
+            FROM
+              ref_biaya_sbu AS sbu, 
+              ref_mak AS mak, 
+              ref_sumberdana AS sd 
+            WHERE
+              sbu.`biayaSbuMakId` = mak.`makId`
+              AND sbu.`biayaSbuSumberdanaId` =  sd.`sumberdanaId`";
+        return $this->db->query($sql)->result();
+
+    }
+
     // get data by id
     function get_by_id($id)
     {
@@ -45,9 +60,13 @@ class MBiayaSbu extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('biayaSbuId', $q);
-	$this->db->or_like('biayaSbuKode', $q);
-	$this->db->or_like('biayaSbuNama', $q);
-	$this->db->from($this->table);
+    	$this->db->or_like('biayaSbuKode', $q);
+    	$this->db->or_like('biayaSbuNama', $q);
+        $this->db->or_like('makKode', $q);
+        $this->db->or_like('makNama', $q);
+        $this->db->or_like('sumberdanaKode', $q);
+        $this->db->or_like('sumberdanaNama', $q);
+    	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
@@ -55,9 +74,13 @@ class MBiayaSbu extends CI_Model
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('biayaSbuId', $q);
-	$this->db->or_like('biayaSbuKode', $q);
-	$this->db->or_like('biayaSbuNama', $q);
-	$this->db->limit($limit, $start);
+    	$this->db->or_like('biayaSbuKode', $q);
+    	$this->db->or_like('biayaSbuNama', $q);
+        $this->db->or_like('makKode', $q);
+        $this->db->or_like('makNama', $q);
+        $this->db->or_like('sumberdanaKode', $q);
+        $this->db->or_like('sumberdanaNama', $q);
+    	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 

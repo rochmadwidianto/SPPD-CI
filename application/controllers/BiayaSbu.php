@@ -28,10 +28,10 @@ class BiayaSbu extends CI_Controller
 
     public function index()
     {
-        $biayasbu = $this->MBiayaSbu->get_all();
+        $biayaSbu = $this->MBiayaSbu->get_all_query();
 
         $data = array(
-            'biayasbu_data' => $biayasbu
+            'biayaSbu_data' => $biayaSbu
         );
 
         $this->template->display('ref_biaya_sbu/ref_biaya_sbu_list', $data);
@@ -45,6 +45,8 @@ class BiayaSbu extends CI_Controller
 		'biayaSbuId' => $row->biayaSbuId,
 		'biayaSbuKode' => $row->biayaSbuKode,
 		'biayaSbuNama' => $row->biayaSbuNama,
+        'biayaSbuMakId' => $row->biayaSbuMakId,
+        'biayaSbuSumberdanaId' => $row->biayaSbuSumberdanaId,
 	    );
             $this->template->display('ref_biaya_sbu/ref_biaya_sbu_read', $data);
         } else {
@@ -59,10 +61,12 @@ class BiayaSbu extends CI_Controller
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
             'action' => site_url('biayasbu/create_action'),
-	    'biayaSbuId' => set_value('biayaSbuId'),
-	    'biayaSbuKode' => set_value('biayaSbuKode'),
-	    'biayaSbuNama' => set_value('biayaSbuNama'),
-	);
+    	    'biayaSbuId' => set_value('biayaSbuId'),
+    	    'biayaSbuKode' => set_value('biayaSbuKode'),
+    	    'biayaSbuNama' => set_value('biayaSbuNama'),
+            'biayaSbuMakId' => set_value('biayaSbuMakId'),
+            'biayaSbuSumberdanaId' => set_value('biayaSbuSumberdanaId'),
+    	);
         $this->template->display('ref_biaya_sbu/ref_biaya_sbu_form', $data);
     }
     
@@ -74,9 +78,11 @@ class BiayaSbu extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'biayaSbuKode' => $this->input->post('biayaSbuKode',TRUE),
-		'biayaSbuNama' => $this->input->post('biayaSbuNama',TRUE),
-	    );
+        		'biayaSbuKode' => $this->input->post('biayaSbuKode',TRUE),
+        		'biayaSbuNama' => $this->input->post('biayaSbuNama',TRUE),
+                'biayaSbuMakId' => $this->input->post('biayaSbuMakId',TRUE),
+                'biayaSbuSumberdanaId' => $this->input->post('biayaSbuSumberdanaId',TRUE),
+    	    );
 
             $this->MBiayaSbu->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -93,10 +99,12 @@ class BiayaSbu extends CI_Controller
             'style_aksi' => 'warning',
             'label_aksi' => 'Ubah',
                 'action' => site_url('biayasbu/update_action'),
-		'biayaSbuId' => set_value('biayaSbuId', $row->biayaSbuId),
-		'biayaSbuKode' => set_value('biayaSbuKode', $row->biayaSbuKode),
-		'biayaSbuNama' => set_value('biayaSbuNama', $row->biayaSbuNama),
-	    );
+        		'biayaSbuId' => set_value('biayaSbuId', $row->biayaSbuId),
+        		'biayaSbuKode' => set_value('biayaSbuKode', $row->biayaSbuKode),
+        		'biayaSbuNama' => set_value('biayaSbuNama', $row->biayaSbuNama),
+                'biayaSbuMakId' => set_value('biayaSbuMakId', $row->biayaSbuMakId),
+                'biayaSbuSumberdanaId' => set_value('biayaSbuSumberdanaId', $row->biayaSbuSumberdanaId),
+        	);
             $this->template->display('ref_biaya_sbu/ref_biaya_sbu_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -112,9 +120,11 @@ class BiayaSbu extends CI_Controller
             $this->update($this->input->post('biayaSbuId', TRUE));
         } else {
             $data = array(
-		'biayaSbuKode' => $this->input->post('biayaSbuKode',TRUE),
-		'biayaSbuNama' => $this->input->post('biayaSbuNama',TRUE),
-	    );
+        		'biayaSbuKode' => $this->input->post('biayaSbuKode',TRUE),
+        		'biayaSbuNama' => $this->input->post('biayaSbuNama',TRUE),
+                'biayaSbuMakId' => $this->input->post('biayaSbuMakId',TRUE),
+                'biayaSbuSumberdanaId' => $this->input->post('biayaSbuSumberdanaId',TRUE),
+    	    );
 
             $this->MBiayaSbu->update($this->input->post('biayaSbuId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -140,6 +150,8 @@ class BiayaSbu extends CI_Controller
     {
 	$this->form_validation->set_rules('biayaSbuKode', 'biayasbukode', 'trim|required');
 	$this->form_validation->set_rules('biayaSbuNama', 'biayasbunama', 'trim|required');
+    $this->form_validation->set_rules('biayaSbuMakId', 'biayaSbuMakId', 'trim|required');
+    $this->form_validation->set_rules('biayaSbuSumberdanaId', 'biayaSbuSumberdanaId', 'trim|required');
 
 	$this->form_validation->set_rules('biayaSbuId', 'biayaSbuId', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -167,8 +179,10 @@ class BiayaSbu extends CI_Controller
 
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
-	xlsWriteLabel($tablehead, $kolomhead++, "BiayaSbuKode");
-	xlsWriteLabel($tablehead, $kolomhead++, "BiayaSbuNama");
+    	xlsWriteLabel($tablehead, $kolomhead++, "Kode");
+    	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
+        xlsWriteLabel($tablehead, $kolomhead++, "MAK");
+        xlsWriteLabel($tablehead, $kolomhead++, "Sumber Dana");
 
 	foreach ($this->MBiayaSbu->get_all() as $data) {
             $kolombody = 0;
@@ -177,6 +191,8 @@ class BiayaSbu extends CI_Controller
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->biayaSbuKode);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->biayaSbuNama);
+        xlsWriteLabel($tablebody, $kolombody++, $data->biayaSbuId);
+        xlsWriteLabel($tablebody, $kolombody++, $data->biayaSbuSumberdanaId);
 
 	    $tablebody++;
             $nourut++;

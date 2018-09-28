@@ -28,11 +28,14 @@
                       <dt>Nama</dt>
                       <dd><?php echo $biayaSbuNama; ?></dd>
                     </dl>
-                    <!--
                     <dl class="dl-horizontal">
-                      <dt>Biaya SBU</dt>
-                      <dd><?php echo $makBiayaSbuId; ?></dd>
-                    </dl> -->
+                      <dt>MAK</dt>
+                      <dd><?php echo $biayaSbuMakId; ?></dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                      <dt>Sumber Dana</dt>
+                      <dd><?php echo $biayaSbuSumberdanaId; ?></dd>
+                    </dl>
                   </div>
                   <!-- /.box-body -->
               <div class="box-footer">

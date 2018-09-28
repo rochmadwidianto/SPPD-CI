@@ -30,21 +30,25 @@
                     <thead>
                         <tr>
                             <th width="40px">No</th>
-                            <th width="250px">Kode</th>
+                            <th>Kode</th>
                             <th>Nama</th>
+                            <th>MAK</th>
+                            <th>Sumber Dana</th>
                             <th width="100px">Aksi</th>
                         </tr>
                     </thead>
             	    <tbody>
                         <?php
                         $start = 0;
-                        foreach ($biayasbu_data as $biayasbu)
+                        foreach ($biayaSbu_data as $biayasbu)
                         {
                             ?>
                             <tr>
             		    <td align="center"><?php echo ++$start ?></td>
             		    <td><?php echo $biayasbu->biayaSbuKode ?></td>
             		    <td><?php echo $biayasbu->biayaSbuNama ?></td>
+                        <td><?php echo '<b>['.$biayasbu->makKode.']</b>  '.$biayasbu->makNama ?></td>
+                        <td><?php echo '<b>[ '.$biayasbu->sumberdanaKode.' ]</b>  '.$biayasbu->sumberdanaNama ?></td>
             		    <td align="center" nowrap>
             			<?php 
             			echo anchor(site_url('biayasbu/read/'.$biayasbu->biayaSbuId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 

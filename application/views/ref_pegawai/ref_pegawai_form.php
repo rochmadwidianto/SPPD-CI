@@ -40,9 +40,6 @@
                     <div class="form-group">
                       <label for="pegawaiJabatan">Jabatan</label>
                       <?php echo form_error('pegawaiJabatan') ?>
-                      <!-- cmb_dinamis($name,$table,$field,$pk,$selected) -->
-                      <!-- pegawaiJabatan : kalo ini field yg inputa (yg sebelumnya) -->
-                      <!-- pegawaiJabatanId : ini kan nama field yg berelasi -->
                       <?php echo cmb_dinamis('pegawaiJabatanId', 'ref_jabatan', 'jabatanNama', 'jabatanId', $pegawaiJabatanId) ?>
                     </div>
                     <div class="form-group">
