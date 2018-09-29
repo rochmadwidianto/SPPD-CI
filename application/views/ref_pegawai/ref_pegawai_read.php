@@ -34,7 +34,7 @@
                     </dl>
                     <dl class="dl-horizontal">
                       <dt>Jabatan</dt>
-                      <dd><?php echo $pegawaiJabatan; ?></dd>
+                      <dd><?php echo $pegawaiJabatanId; ?></dd>
                     </dl>
                     <dl class="dl-horizontal">
                       <dt>Golongan</dt>

@@ -42,9 +42,9 @@ class KotaTujuan extends CI_Controller
         $row = $this->MKotaTujuan->get_by_id($id);
         if ($row) {
             $data = array(
-		'kotaTujuanId' => $row->kotaTujuanId,
-		'kotaTujuanNama' => $row->kotaTujuanNama,
-	    );
+        		'kotaTujuanId' => $row->kotaTujuanId,
+        		'kotaTujuanNama' => $row->kotaTujuanNama,
+	        );
             $this->template->display('ref_kota_tujuan/ref_kota_tujuan_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -57,10 +57,11 @@ class KotaTujuan extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('kotatujuan/create_action'),
-	    'kotaTujuanId' => set_value('kotaTujuanId'),
-	    'kotaTujuanNama' => set_value('kotaTujuanNama'),
-	);
+    	    'kotaTujuanId' => set_value('kotaTujuanId'),
+    	    'kotaTujuanNama' => set_value('kotaTujuanNama'),
+	    );
         $this->template->display('ref_kota_tujuan/ref_kota_tujuan_form', $data);
     }
     
@@ -72,8 +73,8 @@ class KotaTujuan extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'kotaTujuanNama' => $this->input->post('kotaTujuanNama',TRUE),
-	    );
+		      'kotaTujuanNama' => $this->input->post('kotaTujuanNama',TRUE),
+	        );
 
             $this->MKotaTujuan->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -87,12 +88,13 @@ class KotaTujuan extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('kotatujuan/update_action'),
-		'kotaTujuanId' => set_value('kotaTujuanId', $row->kotaTujuanId),
-		'kotaTujuanNama' => set_value('kotaTujuanNama', $row->kotaTujuanNama),
-	    );
+        		'kotaTujuanId' => set_value('kotaTujuanId', $row->kotaTujuanId),
+        		'kotaTujuanNama' => set_value('kotaTujuanNama', $row->kotaTujuanNama),
+	        );
             $this->template->display('ref_kota_tujuan/ref_kota_tujuan_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -108,8 +110,8 @@ class KotaTujuan extends CI_Controller
             $this->update($this->input->post('kotaTujuanId', TRUE));
         } else {
             $data = array(
-		'kotaTujuanNama' => $this->input->post('kotaTujuanNama',TRUE),
-	    );
+		      'kotaTujuanNama' => $this->input->post('kotaTujuanNama',TRUE),
+	        );
 
             $this->MKotaTujuan->update($this->input->post('kotaTujuanId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');

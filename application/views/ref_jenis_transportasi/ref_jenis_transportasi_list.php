@@ -15,8 +15,6 @@
               <div class='box'>
                 <div class='box-header with-border'>
                   <h3 class='box-title'>
-                    <?php echo anchor(site_url('jenistransportasi/pdf'), '<i class="fa fa-file-pdf-o"></i> PDF', 'class="btn btn-primary btn-sm"'); ?>
-            		<?php echo anchor(site_url('jenistransportasi/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?>
                     <?php echo anchor('jenistransportasi/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?>  
                     </h3>
                     <div class="box-tools pull-right">
@@ -45,8 +43,8 @@
                 		    <td><?php echo $jenistransportasi->jenisTransportNama ?></td>
                 		    <td align="center" nowrap>
                 			<?php 
-                			echo anchor(site_url('jenistransportasi/read/'.$jenistransportasi->jenisTransportId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
-                			echo '  '; 
+                			// echo anchor(site_url('jenistransportasi/read/'.$jenistransportasi->jenisTransportId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
+                			// echo '  '; 
                 			echo anchor(site_url('jenistransportasi/update/'.$jenistransportasi->jenisTransportId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle'=>'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
                 			echo '  '; 
                 			echo anchor(site_url('jenistransportasi/delete/'.$jenistransportasi->jenisTransportId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 

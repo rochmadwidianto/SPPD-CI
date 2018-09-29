@@ -60,11 +60,12 @@ class Mak extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('mak/create_action'),
-	    'makId' => set_value('makId'),
-	    'makKode' => set_value('makKode'),
-	    'makNama' => set_value('makNama'),
-	);
+    	    'makId' => set_value('makId'),
+    	    'makKode' => set_value('makKode'),
+    	    'makNama' => set_value('makNama'),
+    	);
         $this->template->display('ref_mak/ref_mak_form', $data);
     }
     
@@ -92,14 +93,15 @@ class Mak extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('mak/update_action'),
-		'makId' => set_value('makId', $row->makId),
-		'makKode' => set_value('makKode', $row->makKode),
-		'makNama' => set_value('makNama', $row->makNama),
+        		'makId' => set_value('makId', $row->makId),
+        		'makKode' => set_value('makKode', $row->makKode),
+        		'makNama' => set_value('makNama', $row->makNama),
 		
-	    );
+	        );
             $this->template->display('ref_mak/ref_mak_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

@@ -58,11 +58,12 @@ class Sumberdana extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('sumberdana/create_action'),
-	    'sumberdanaId' => set_value('sumberdanaId'),
-	    'sumberdanaKode' => set_value('sumberdanaKode'),
-	    'sumberdanaNama' => set_value('sumberdanaNama'),
-	);
+    	    'sumberdanaId' => set_value('sumberdanaId'),
+    	    'sumberdanaKode' => set_value('sumberdanaKode'),
+    	    'sumberdanaNama' => set_value('sumberdanaNama'),
+	    );
         $this->template->display('ref_sumberdana/ref_sumberdana_form', $data);
     }
     
@@ -74,9 +75,9 @@ class Sumberdana extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'sumberdanaKode' => $this->input->post('sumberdanaKode',TRUE),
-		'sumberdanaNama' => $this->input->post('sumberdanaNama',TRUE),
-	    );
+        		'sumberdanaKode' => $this->input->post('sumberdanaKode',TRUE),
+        		'sumberdanaNama' => $this->input->post('sumberdanaNama',TRUE),
+	        );
 
             $this->MSumberdana->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -92,11 +93,12 @@ class Sumberdana extends CI_Controller
             $data = array(
                 'style_aksi' => 'warning',
                 'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('sumberdana/update_action'),
-		'sumberdanaId' => set_value('sumberdanaId', $row->sumberdanaId),
-		'sumberdanaKode' => set_value('sumberdanaKode', $row->sumberdanaKode),
-		'sumberdanaNama' => set_value('sumberdanaNama', $row->sumberdanaNama),
-	    );
+        		'sumberdanaId' => set_value('sumberdanaId', $row->sumberdanaId),
+        		'sumberdanaKode' => set_value('sumberdanaKode', $row->sumberdanaKode),
+        		'sumberdanaNama' => set_value('sumberdanaNama', $row->sumberdanaNama),
+	        );
             $this->template->display('ref_sumberdana/ref_sumberdana_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

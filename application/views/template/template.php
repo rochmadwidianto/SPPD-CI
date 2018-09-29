@@ -18,6 +18,13 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins -->
         <link href="<?php echo base_url('assets/css/skins/_all-skins.min.css'); ?>" rel="stylesheet">
 
+        <!-- bootstrap datepicker -->
+        <link href="<?php echo base_url('assets/bootstrap/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'); ?>" rel="stylesheet" type="text/css">
+        <!-- Bootstrap time Picker -->
+        <link href="<?php echo base_url('assets/bootstrap/bootstrap-timepicker.min.css'); ?>" rel="stylesheet" type="text/css">
+        <!-- Select2 -->
+        <link href="<?php echo base_url('assets/bootstrap/select2/dist/css/select2.min.css'); ?>" rel="stylesheet" type="text/css">
+
         <!--datepicker -->
         <link href="<?php echo base_url('assets/js/plugins/datepicker/bootstrap-datetimepicker.min.css'); ?>" rel="stylesheet" type="text/css">
         <!-- iCheck -->
@@ -68,6 +75,12 @@
         <script src="<?php echo base_url('assets/js/plugins/input-mask/jquery.inputmask.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/plugins/input-mask/jquery.inputmask.date.extensions.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/plugins/input-mask/jquery.inputmask.extensions.js'); ?>"></script>
+        <!-- bootstrap datepicker -->
+        <script src="<?php echo base_url('assets/bootstrap/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'); ?>"></script>
+        <!-- bootstrap time picker -->
+        <script src="<?php echo base_url('assets/bootstrap/bootstrap-timepicker.min.js'); ?>"></script>
+        <!-- Select2 -->
+        <script src="<?php echo base_url('assets/bootstrap/select2/dist/js/select2.full.min.js'); ?>"></script>
         <!-- Datepicker -->
         <script src="<?php echo base_url('assets/js/plugins/datepicker/bootstrap-datetimepicker.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/plugins/datepicker/locales/bootstrap-datetimepicker.id.js'); ?>"></script>
@@ -87,21 +100,56 @@
 </html>
 <script>
     $(function () {
-        $('.datepicker').datetimepicker({
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+        //Initialize datepicker
+        $('.datepicker').datepicker({
+            autoclose: true,
+            beforeShowDay: $.noop,
+            calendarWeeks: false,
+            clearBtn: false,
+            daysOfWeekDisabled: [],
+            endDate: Infinity,
+            forceParse: true,
+            format: 'd MM yyyy',
+            keyboardNavigation: true,
             language: 'id',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
+            minViewMode: 0,
+            multidate: false,
+            multidateSeparator: ',',
+            orientation: "auto",
+            rtl: false,
+            startDate: -Infinity,
+            startView: 0,
+            todayBtn: true,
+            todayHighlight: true,
+            weekStart: 0
         });
     });
+
     $(function () {
-        $('#datetimepicker').datetimepicker();
-        $('#datetimepicker1').datetimepicker();
+        $('#datepicker').datepicker();
+        $('#datepicker1').datepicker();
     });
+
+
+    // $(function () {
+    //     $('.datepicker').datetimepicker({
+    //         language: 'id',
+    //         weekStart: 1,
+    //         todayBtn: 1,
+    //         autoclose: 1,
+    //         todayHighlight: 1,
+    //         startView: 2,
+    //         minView: 2,
+    //         forceParse: 0
+    //     });
+    // });
+    // $(function () {
+    //     $('#datetimepicker').datetimepicker();
+    //     $('#datetimepicker1').datetimepicker();
+    // });
 </script>
 
 

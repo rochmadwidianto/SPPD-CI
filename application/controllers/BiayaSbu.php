@@ -60,6 +60,7 @@ class BiayaSbu extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('biayasbu/create_action'),
     	    'biayaSbuId' => set_value('biayaSbuId'),
     	    'biayaSbuKode' => set_value('biayaSbuKode'),
@@ -96,8 +97,9 @@ class BiayaSbu extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('biayasbu/update_action'),
         		'biayaSbuId' => set_value('biayaSbuId', $row->biayaSbuId),
         		'biayaSbuKode' => set_value('biayaSbuKode', $row->biayaSbuKode),

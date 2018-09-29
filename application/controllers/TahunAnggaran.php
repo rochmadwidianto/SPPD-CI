@@ -42,17 +42,17 @@ class TahunAnggaran extends CI_Controller
         $row = $this->MTahunAnggaran->get_by_id($id);
         if ($row) {
             $data = array(
-		'thAnggaranId' => $row->thAnggaranId,
-		'thAnggaranNama' => $row->thAnggaranNama,
-		'thAnggaranIsAktif' => $row->thAnggaranIsAktif,
-		'thAnggaranIsOpen' => $row->thAnggaranIsOpen,
-		'thAnggaranBuka' => $row->thAnggaranBuka,
-		'thAnggaranTutup' => $row->thAnggaranTutup,
-	    );
+        		'thAnggaranId' => $row->thAnggaranId,
+        		'thAnggaranNama' => $row->thAnggaranNama,
+        		'thAnggaranIsAktif' => $row->thAnggaranIsAktif,
+        		'thAnggaranIsOpen' => $row->thAnggaranIsOpen,
+        		'thAnggaranBuka' => $row->thAnggaranBuka,
+        		'thAnggaranTutup' => $row->thAnggaranTutup,
+    	    );
             $this->template->display('ref_tahun_anggaran/ref_tahun_anggaran_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('tahunanggaran'));
+            redirect(site_url('tahunAnggaran'));
         }
     }
 
@@ -61,14 +61,15 @@ class TahunAnggaran extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
-            'action' => site_url('tahunanggaran/create_action'),
-	    'thAnggaranId' => set_value('thAnggaranId'),
-	    'thAnggaranNama' => set_value('thAnggaranNama'),
-	    'thAnggaranIsAktif' => set_value('thAnggaranIsAktif'),
-	    'thAnggaranIsOpen' => set_value('thAnggaranIsOpen'),
-	    'thAnggaranBuka' => set_value('thAnggaranBuka'),
-	    'thAnggaranTutup' => set_value('thAnggaranTutup'),
-	);
+            'icon' => 'fa fa-plus-square-o',
+            'action' => site_url('tahunAnggaran/create_action'),
+    	    'thAnggaranId' => set_value('thAnggaranId'),
+    	    'thAnggaranNama' => set_value('thAnggaranNama'),
+    	    'thAnggaranIsAktif' => set_value('thAnggaranIsAktif'),
+    	    'thAnggaranIsOpen' => set_value('thAnggaranIsOpen'),
+    	    'thAnggaranBuka' => set_value('thAnggaranBuka'),
+    	    'thAnggaranTutup' => set_value('thAnggaranTutup'),
+    	);
         $this->template->display('ref_tahun_anggaran/ref_tahun_anggaran_form', $data);
     }
     
@@ -79,17 +80,20 @@ class TahunAnggaran extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+            $tglBuka = date('Y-m-d', strtotime($this->input->post('thAnggaranBuka',TRUE)));
+            $tglTutup = date('Y-m-d', strtotime($this->input->post('thAnggaranTutup',TRUE)));
+
             $data = array(
-		'thAnggaranNama' => $this->input->post('thAnggaranNama',TRUE),
-		'thAnggaranIsAktif' => $this->input->post('thAnggaranIsAktif',TRUE),
-		'thAnggaranIsOpen' => $this->input->post('thAnggaranIsOpen',TRUE),
-		'thAnggaranBuka' => $this->input->post('thAnggaranBuka',TRUE),
-		'thAnggaranTutup' => $this->input->post('thAnggaranTutup',TRUE),
-	    );
+        		'thAnggaranNama' => $this->input->post('thAnggaranNama',TRUE),
+        		'thAnggaranIsAktif' => $this->input->post('thAnggaranIsAktif',TRUE),
+        		'thAnggaranIsOpen' => $this->input->post('thAnggaranIsOpen',TRUE),
+        		'thAnggaranBuka' => $tglBuka,
+        		'thAnggaranTutup' => $tglTutup,
+    	    );
 
             $this->MTahunAnggaran->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('tahunanggaran'));
+            redirect(site_url('tahunAnggaran'));
         }
     }
     
@@ -99,20 +103,21 @@ class TahunAnggaran extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
-                'action' => site_url('tahunanggaran/update_action'),
-		'thAnggaranId' => set_value('thAnggaranId', $row->thAnggaranId),
-		'thAnggaranNama' => set_value('thAnggaranNama', $row->thAnggaranNama),
-		'thAnggaranIsAktif' => set_value('thAnggaranIsAktif', $row->thAnggaranIsAktif),
-		'thAnggaranIsOpen' => set_value('thAnggaranIsOpen', $row->thAnggaranIsOpen),
-		'thAnggaranBuka' => set_value('thAnggaranBuka', $row->thAnggaranBuka),
-		'thAnggaranTutup' => set_value('thAnggaranTutup', $row->thAnggaranTutup),
-	    );
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
+                'action' => site_url('tahunAnggaran/update_action'),
+        		'thAnggaranId' => set_value('thAnggaranId', $row->thAnggaranId),
+        		'thAnggaranNama' => set_value('thAnggaranNama', $row->thAnggaranNama),
+        		'thAnggaranIsAktif' => set_value('thAnggaranIsAktif', $row->thAnggaranIsAktif),
+        		'thAnggaranIsOpen' => set_value('thAnggaranIsOpen', $row->thAnggaranIsOpen),
+        		'thAnggaranBuka' => set_value('thAnggaranBuka', $row->thAnggaranBuka),
+        		'thAnggaranTutup' => set_value('thAnggaranTutup', $row->thAnggaranTutup),
+    	    );
             $this->template->display('ref_tahun_anggaran/ref_tahun_anggaran_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('tahunanggaran'));
+            redirect(site_url('tahunAnggaran'));
         }
     }
     
@@ -123,17 +128,20 @@ class TahunAnggaran extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('thAnggaranId', TRUE));
         } else {
+            $tglBuka = date('Y-m-d', strtotime($this->input->post('thAnggaranBuka',TRUE)));
+            $tglTutup = date('Y-m-d', strtotime($this->input->post('thAnggaranTutup',TRUE)));
+
             $data = array(
-		'thAnggaranNama' => $this->input->post('thAnggaranNama',TRUE),
-		'thAnggaranIsAktif' => $this->input->post('thAnggaranIsAktif',TRUE),
-		'thAnggaranIsOpen' => $this->input->post('thAnggaranIsOpen',TRUE),
-		'thAnggaranBuka' => $this->input->post('thAnggaranBuka',TRUE),
-		'thAnggaranTutup' => $this->input->post('thAnggaranTutup',TRUE),
-	    );
+        		'thAnggaranNama' => $this->input->post('thAnggaranNama',TRUE),
+        		'thAnggaranIsAktif' => $this->input->post('thAnggaranIsAktif',TRUE),
+        		'thAnggaranIsOpen' => $this->input->post('thAnggaranIsOpen',TRUE),
+                'thAnggaranBuka' => $tglBuka,
+                'thAnggaranTutup' => $tglTutup,
+    	    );
 
             $this->MTahunAnggaran->update($this->input->post('thAnggaranId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('tahunanggaran'));
+            redirect(site_url('tahunAnggaran'));
         }
     }
     
@@ -144,10 +152,10 @@ class TahunAnggaran extends CI_Controller
         if ($row) {
             $this->MTahunAnggaran->delete($id);
             $this->session->set_flashdata('message', 'Delete Record Success');
-            redirect(site_url('tahunanggaran'));
+            redirect(site_url('tahunAnggaran'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('tahunanggaran'));
+            redirect(site_url('tahunAnggaran'));
         }
     }
 

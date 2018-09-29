@@ -38,7 +38,7 @@
                     </dl>
                     <dl class="dl-horizontal">
                       <dt>Nominal</dt>
-                      <dd><?php echo $rabNominalTotal; ?></dd>
+                      <dd><?php echo rupiah($rabNominalTotal); ?></dd>
                     </dl>
                   </div>
                   <!-- /.box-body -->

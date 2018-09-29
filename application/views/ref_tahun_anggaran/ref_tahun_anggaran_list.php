@@ -15,9 +15,7 @@
               <div class='box'>
                 <div class='box-header with-border'>
                     <h3 class='box-title'>
-                		<?php echo anchor(site_url('tahunanggaran/pdf'), '<i class="fa fa-file-pdf-o"></i> PDF', 'class="btn btn-primary btn-sm"'); ?>
-                        <?php echo anchor(site_url('tahunanggaran/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?>
-                        <?php echo anchor('tahunanggaran/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?>
+                        <?php echo anchor('tahunAnggaran/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?>
                     </h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
@@ -43,18 +41,34 @@
                         $start = 0;
                         foreach ($tahunanggaran_data as $tahunanggaran)
                         {
+                            if(strtoupper($tahunanggaran->thAnggaranIsAktif) == 'YA') {
+                                $aktifStyle = 'success';
+                                $aktifLabel = 'AKTIF';
+                            }else{
+                                $aktifStyle = 'danger';
+                                $aktifLabel = 'TIDAK';
+                            }
+
+                            if(strtoupper($tahunanggaran->thAnggaranIsOpen) == 'YA') {
+                                $openStyle = 'success';
+                                $openLabel = 'YA';
+                            }else{
+                                $openStyle = 'danger';
+                                $openLabel = 'TIDAK';
+                            }
+
                             ?>
                             <tr>
             		    <td align="center"><?php echo ++$start ?></td>
             		    <td><?php echo $tahunanggaran->thAnggaranNama ?></td>
-            		    <td align="center"><?php echo $tahunanggaran->thAnggaranIsAktif ?></td>
-            		    <td align="center"><?php echo $tahunanggaran->thAnggaranIsOpen ?></td>
-            		    <td><?php echo $tahunanggaran->thAnggaranBuka ?></td>
-            		    <td><?php echo $tahunanggaran->thAnggaranTutup ?></td>
+            		    <td align="center"><span class="label label-<?php echo $aktifStyle ?>"><?php echo $aktifLabel ?></span></td>
+            		    <td align="center"><span class="label label-<?php echo $openStyle ?>"><?php echo $openLabel ?></span></td>
+            		    <td align="center"><?php echo tgl_indo_long($tahunanggaran->thAnggaranBuka) ?></td>
+            		    <td align="center"><?php echo tgl_indo_long($tahunanggaran->thAnggaranTutup) ?></td>
             		    <td align="center" nowrap>
             			<?php 
-            			echo anchor(site_url('tahunanggaran/read/'.$tahunanggaran->thAnggaranId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
-            			echo '  '; 
+            			// echo anchor(site_url('tahunanggaran/read/'.$tahunanggaran->thAnggaranId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
+            			// echo '  '; 
             			echo anchor(site_url('tahunanggaran/update/'.$tahunanggaran->thAnggaranId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle'=>'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
             			echo '  '; 
             			echo anchor(site_url('tahunanggaran/delete/'.$tahunanggaran->thAnggaranId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 

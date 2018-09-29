@@ -24,6 +24,7 @@ class Rab extends CI_Controller
         parent::__construct();
         $this->load->model('MRab');
         $this->load->library('form_validation');
+        $this->user_id = $this->session->userdata('user_id');
     }
 
     public function index()
@@ -42,15 +43,15 @@ class Rab extends CI_Controller
         $row = $this->MRab->get_by_id($id);
         if ($row) {
             $data = array(
-		'rabId' => $row->rabId,
-		'rabThnAnggId' => $row->rabThnAnggId,
-		'rabKode' => $row->rabKode,
-		'rabNama' => $row->rabNama,
-		'rabKeterangan' => $row->rabKeterangan,
-		'rabNominalTotal' => $row->rabNominalTotal,
-        'rabTglInput' => $row->rabTglInput,
-        'rabUserId' => $row->rabUserId,
-	    );
+        		'rabId' => $row->rabId,
+        		'rabThnAnggId' => $row->rabThnAnggId,
+        		'rabKode' => $row->rabKode,
+        		'rabNama' => $row->rabNama,
+        		'rabKeterangan' => $row->rabKeterangan,
+        		'rabNominalTotal' => $row->rabNominalTotal,
+                'rabTglInput' => $row->rabTglInput,
+                'rabUserId' => $row->rabUserId,
+	        );
             $this->template->display('fin_rab/fin_rab_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -58,26 +59,25 @@ class Rab extends CI_Controller
         }
     }
 
-    //iki kan function tambah kan?
     public function create() 
     {
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('rab/create_action'),
-	    'rabId' => set_value('rabId'),
-	    'rabThnAnggId' => set_value('rabThnAnggId'),
-	    'rabKode' => set_value('rabKode'),
-	    'rabNama' => set_value('rabNama'),
-	    'rabKeterangan' => set_value('rabKeterangan'),
-	    'rabNominalTotal' => set_value('rabNominalTotal'),
-        'rabTglInput' => set_value('rabTglInput'),
-        'rabUserId' => set_value('rabUserId'),
-	);
+    	    'rabId' => set_value('rabId'),
+    	    'rabThnAnggId' => set_value('rabThnAnggId'),
+    	    'rabKode' => set_value('rabKode'),
+    	    'rabNama' => set_value('rabNama'),
+    	    'rabKeterangan' => set_value('rabKeterangan'),
+    	    'rabNominalTotal' => set_value('rabNominalTotal'),
+            // 'rabTglInput' => set_value('rabTglInput'),
+            // 'rabUserId' => set_value('rabUserId'),
+	    );
         $this->template->display('fin_rab/fin_rab_form', $data);
     }
     
-    //bedanya sama ini?
     public function create_action() 
     {
         $this->_rules();
@@ -86,14 +86,14 @@ class Rab extends CI_Controller
             $this->create();
         } else {
             $data = array(
-        'rabThnAnggId' => $this->input->post('rabThnAnggId',TRUE),
-		'rabKode' => $this->input->post('rabKode',TRUE),
-		'rabNama' => $this->input->post('rabNama',TRUE),
-		'rabKeterangan' => $this->input->post('rabKeterangan',TRUE),
-		'rabNominalTotal' => $this->input->post('rabNominalTotal',TRUE),
-		'rabTglInput' => $this->input->post('rabTglInput',TRUE),
-        'rabUserId' => $this->input->post('rabUserId',TRUE),
-	    );
+                'rabThnAnggId' => $this->input->post('rabThnAnggId',TRUE),
+        		'rabKode' => $this->input->post('rabKode',TRUE),
+        		'rabNama' => $this->input->post('rabNama',TRUE),
+        		'rabKeterangan' => $this->input->post('rabKeterangan',TRUE),
+        		'rabNominalTotal' => $this->input->post('rabNominalTotal',TRUE),
+        		'rabTglInput' => date('Y-m-d'),
+                'rabUserId' => $this->user_id,
+	        );
 
             $this->MRab->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -107,16 +107,18 @@ class Rab extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('rab/update_action'),
-		'rabId' => set_value('rabId', $row->rabId),
-		'rabThnAnggId' => set_value('rabThnAnggId', $row->rabThnAnggId),
-		'rabKode' => set_value('rabKode', $row->rabKode),
-		'rabNama' => set_value('rabNama', $row->rabNama),
-		'rabKeterangan' => set_value('rabKeterangan', $row->rabKeterangan),
-		'rabUserId' => set_value('rabUserId', $row->rabUserId),
-	    );
+        		'rabId' => set_value('rabId', $row->rabId),
+        		'rabThnAnggId' => set_value('rabThnAnggId', $row->rabThnAnggId),
+        		'rabKode' => set_value('rabKode', $row->rabKode),
+        		'rabNama' => set_value('rabNama', $row->rabNama),
+        		'rabKeterangan' => set_value('rabKeterangan', $row->rabKeterangan),
+                'rabNominalTotal' => set_value('rabNominalTotal', $row->rabNominalTotal),
+        		'rabUserId' => set_value('rabUserId', $row->rabUserId),
+	       );
             $this->template->display('fin_rab/fin_rab_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -132,14 +134,14 @@ class Rab extends CI_Controller
             $this->update($this->input->post('rabId', TRUE));
         } else {
             $data = array(
-        'rabThnAnggId' => $this->input->post('rabThnAnggId',TRUE),
-        'rabKode' => $this->input->post('rabKode',TRUE),
-        'rabNama' => $this->input->post('rabNama',TRUE),
-        'rabKeterangan' => $this->input->post('rabKeterangan',TRUE),
-        'rabNominalTotal' => $this->input->post('rabNominalTotal',TRUE),
-        'rabTglInput' => $this->input->post('rabTglInput',TRUE),
-        'rabUserId' => $this->input->post('rabUserId',TRUE),
-	    );
+                'rabThnAnggId' => $this->input->post('rabThnAnggId',TRUE),
+                'rabKode' => $this->input->post('rabKode',TRUE),
+                'rabNama' => $this->input->post('rabNama',TRUE),
+                'rabKeterangan' => $this->input->post('rabKeterangan',TRUE),
+                'rabNominalTotal' => $this->input->post('rabNominalTotal',TRUE),
+                // 'rabTglInput' => $this->input->post('rabTglInput',TRUE),
+                'rabUserId' => $this->user_id,
+	        );
 
             $this->MRab->update($this->input->post('rabId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -168,7 +170,7 @@ class Rab extends CI_Controller
 	$this->form_validation->set_rules('rabNama', 'rabNama', 'trim|required');
 	$this->form_validation->set_rules('rabKeterangan', 'rabKeterangan', 'trim|required');
 	$this->form_validation->set_rules('rabNominalTotal', 'rabNominalTotal', 'trim|required');
-	$this->form_validation->set_rules('rabUserId', 'rabUserId', 'trim|required');
+	// $this->form_validation->set_rules('rabUserId', 'rabUserId', 'trim|required');
 
 	$this->form_validation->set_rules('rabId', 'rabId', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

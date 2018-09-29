@@ -42,11 +42,11 @@ class Jabatan extends CI_Controller
         $row = $this->MJabatan->get_by_id($id);
         if ($row) {
             $data = array(
-		'jabatanId' => $row->jabatanId,
-		'jabatanKode' => $row->jabatanKode,
-		'jabatanKode' => $row->jabatanNama,
-        'jabatanKeterangan' => $row->jabatanKeterangan,
-	    );
+        		'jabatanId' => $row->jabatanId,
+        		'jabatanKode' => $row->jabatanKode,
+        		'jabatanKode' => $row->jabatanNama,
+                'jabatanKeterangan' => $row->jabatanKeterangan,
+	        );
             $this->template->display('ref_jabatan/ref_jabatan_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -59,12 +59,13 @@ class Jabatan extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('jabatan/create_action'),
-	    'jabatanId' => set_value('jabatanId'),
-	    'jabatanKode' => set_value('jabatanKode'),
-	    'jabatanNama' => set_value('jabatanNama'),
-        'jabatanKeterangan' => set_value('jabatanKeterangan'),
-	);
+    	    'jabatanId' => set_value('jabatanId'),
+    	    'jabatanKode' => set_value('jabatanKode'),
+    	    'jabatanNama' => set_value('jabatanNama'),
+            'jabatanKeterangan' => set_value('jabatanKeterangan'),
+    	);
         $this->template->display('ref_jabatan/ref_jabatan_form', $data);
     }
     
@@ -76,10 +77,10 @@ class Jabatan extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'jabatanKode' => $this->input->post('jabatanKode',TRUE),
-		'jabatanNama' => $this->input->post('jabatanNama',TRUE),
-        'jabatanKeterangan' => $this->input->post('jabatanKeterangan',TRUE),
-	    );
+        		'jabatanKode' => $this->input->post('jabatanKode',TRUE),
+        		'jabatanNama' => $this->input->post('jabatanNama',TRUE),
+                'jabatanKeterangan' => $this->input->post('jabatanKeterangan',TRUE),
+	        );
 
             $this->MJabatan->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -93,14 +94,15 @@ class Jabatan extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('jabatan/update_action'),
-		'jabatanId' => set_value('jabatanId', $row->jabatanId),
-		'jabatanKode' => set_value('jabatanKode', $row->jabatanKode),
-		'jabatanNama' => set_value('jabatanNama', $row->jabatanNama),
-        'jabatanKeterangan' => set_value('jabatanKeterangan', $row->jabatanKeterangan),
-	    );
+        		'jabatanId' => set_value('jabatanId', $row->jabatanId),
+        		'jabatanKode' => set_value('jabatanKode', $row->jabatanKode),
+        		'jabatanNama' => set_value('jabatanNama', $row->jabatanNama),
+                'jabatanKeterangan' => set_value('jabatanKeterangan', $row->jabatanKeterangan),
+	        );
             $this->template->display('ref_jabatan/ref_jabatan_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -116,10 +118,10 @@ class Jabatan extends CI_Controller
             $this->update($this->input->post('jabatanId', TRUE));
         } else {
             $data = array(
-		'jabatanKode' => $this->input->post('jabatanKode',TRUE),
-		'jabatanNama' => $this->input->post('jabatanNama',TRUE),
-        'jabatanKeterangan' => $this->input->post('jabatanKeterangan',TRUE),
-	    );
+        		'jabatanKode' => $this->input->post('jabatanKode',TRUE),
+        		'jabatanNama' => $this->input->post('jabatanNama',TRUE),
+                'jabatanKeterangan' => $this->input->post('jabatanKeterangan',TRUE),
+	        );
 
             $this->MJabatan->update($this->input->post('jabatanId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');

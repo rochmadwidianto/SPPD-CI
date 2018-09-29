@@ -35,9 +35,11 @@ CREATE TABLE `fin_rab_mst` (
   KEY `rab_user_id` (`rabUserId`),
   CONSTRAINT `rab_thn_anggaran` FOREIGN KEY (`rabThnAnggId`) REFERENCES `ref_tahun_anggaran` (`thAnggaranId`) ON UPDATE CASCADE,
   CONSTRAINT `rab_user_id` FOREIGN KEY (`rabUserId`) REFERENCES `tb_users` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `fin_rab_mst` */
+
+insert  into `fin_rab_mst`(`rabId`,`rabThnAnggId`,`rabKode`,`rabNama`,`rabKeterangan`,`rabNominalTotal`,`rabTglInput`,`rabTglUpdate`,`rabUserId`) values (1,1,'RAB-001','RAB Awal Tahun','Keterangan','500000000.00','2018-09-29','2018-09-29 23:28:08',1);
 
 /*Table structure for table `ref_biaya_sbu` */
 
@@ -89,7 +91,7 @@ CREATE TABLE `ref_jabatan` (
 
 /*Data for the table `ref_jabatan` */
 
-insert  into `ref_jabatan`(`jabatanId`,`jabatanKode`,`jabatanNama`,`jabatanKeterangan`) values (1,'1','Rektor','');
+insert  into `ref_jabatan`(`jabatanId`,`jabatanKode`,`jabatanNama`,`jabatanKeterangan`) values (1,'001','Rektor','');
 
 /*Table structure for table `ref_jenis_transportasi` */
 
@@ -184,9 +186,11 @@ CREATE TABLE `ref_tahun_anggaran` (
   `thAnggaranBuka` date DEFAULT NULL,
   `thAnggaranTutup` date DEFAULT NULL,
   PRIMARY KEY (`thAnggaranId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `ref_tahun_anggaran` */
+
+insert  into `ref_tahun_anggaran`(`thAnggaranId`,`thAnggaranNama`,`thAnggaranIsAktif`,`thAnggaranIsOpen`,`thAnggaranBuka`,`thAnggaranTutup`) values (1,'2018','Ya','Ya','2018-09-29','2019-11-21');
 
 /*Table structure for table `tb_groups` */
 
@@ -245,11 +249,11 @@ CREATE TABLE `tb_menu` (
   `role` enum('Administrator','Admin') DEFAULT 'Admin',
   `aktif` enum('Y','N') NOT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tb_menu` */
 
-insert  into `tb_menu`(`id_menu`,`nama_menu`,`icon`,`link`,`parent`,`role`,`aktif`) values (1,'Dashboard','fa fa-dashboard','dashboard',0,'Admin','Y'),(22,'Setting','fa fa-gears','#',0,'Administrator','Y'),(23,'Menu','fa  fa-bars text-aqua','menu',22,'Administrator','Y'),(24,'User','fa fa-users text-aqua','auth/member',22,'Administrator','Y'),(26,'Group User','fa  fa-bars text-aqua','groups',22,'Admin','Y'),(28,'Manajemen Referensi','fa fa-navicon','#',0,'Admin','Y'),(29,'Golongan Pegawai','fa fa-bookmark text-aqua','golongan',28,'Admin','Y'),(30,'Pegawai','fa fa-group text-aqua','pegawai',28,'Admin','Y'),(31,'Jenis Transportasi','fa fa-automobile text-aqua','jenisTransportasi',28,'Admin','Y'),(32,'Kota Tujuan','fa fa-map-marker text-aqua','kotaTujuan',28,'Admin','Y'),(33,'Manajemen Anggaran','fa fa-money','#',0,'Admin','Y'),(34,'Biaya SBU','fa fa-calculator text-aqua','biayaSbu',33,'Admin','Y'),(35,'Tahun Anggaran','fa fa-calendar text-aqua','TahunAnggaran',33,'Admin','Y'),(36,'Mata Anggaran Kegiatan','fa fa-book text-aqua','Mak',33,'Admin','Y'),(37,'Rencana Anggaran Belanja','fa fa-sticky-note text-aqua','Rab',33,'Admin','Y'),(38,'Jabatan','fa fa-user','jabatan',28,'Admin','Y'),(39,'Sumber Dana','fa fa-money text-aqua','sumberdana',33,'Admin','Y');
+insert  into `tb_menu`(`id_menu`,`nama_menu`,`icon`,`link`,`parent`,`role`,`aktif`) values (1,'Dashboard','fa fa-dashboard','dashboard',0,'Admin','Y'),(22,'Setting','fa fa-gears','#',0,'Administrator','Y'),(23,'Menu','fa  fa-bars text-aqua','menu',22,'Administrator','Y'),(24,'User','fa fa-users text-aqua','auth/member',22,'Administrator','Y'),(26,'Group User','fa  fa-bars text-aqua','groups',22,'Admin','Y'),(28,'Manajemen Referensi','fa fa-navicon','#',0,'Admin','Y'),(29,'Golongan Pegawai','fa fa-bookmark text-aqua','golongan',28,'Admin','Y'),(30,'Pegawai','fa fa-group text-aqua','pegawai',28,'Admin','Y'),(31,'Jenis Transportasi','fa fa-automobile text-aqua','jenisTransportasi',28,'Admin','Y'),(32,'Kota Tujuan','fa fa-map-marker text-aqua','kotaTujuan',28,'Admin','Y'),(33,'Manajemen Anggaran','fa fa-money','#',0,'Admin','Y'),(34,'Standar Biaya SBU','fa fa-calculator text-aqua','biayaSbu',33,'Admin','Y'),(35,'Tahun Anggaran','fa fa-calendar text-aqua','TahunAnggaran',33,'Admin','Y'),(36,'Mata Anggaran Kegiatan','fa fa-book text-aqua','Mak',33,'Admin','Y'),(37,'Rencana Anggaran Belanja','fa fa-list-alt text-aqua','Rab',33,'Admin','Y'),(38,'Jabatan','fa fa-sitemap text-aqua','jabatan',28,'Admin','Y'),(39,'Sumber Dana','fa fa-money text-aqua','sumberdana',33,'Admin','Y'),(40,'Manajemen SPD','fa fa-plane','#',0,'Admin','Y'),(41,'SPPD','fa fa-envelope-o text-aqua','3',40,'Admin','Y'),(42,'Nota SPPD','fa fa-file-text-o text-aqua','#',40,'Admin','Y'),(43,'Laporan','fa fa-file-text-o','#',0,'Admin','Y'),(44,'Perjalanan Dinas','fa fa-plane text-aqua','#',43,'Admin','Y'),(45,'Biaya','fa fa-money text-aqua','#',43,'Admin','Y'),(46,'Monitoring Anggaran','fa fa-television text-aqua','#',43,'Admin','Y');
 
 /*Table structure for table `tb_nominal` */
 
@@ -334,7 +338,7 @@ CREATE TABLE `tb_users` (
 
 /*Data for the table `tb_users` */
 
-insert  into `tb_users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$5OZGvY1omkAbPfGLY5sN3eHNA7SyP72hnJhjWWc1Dr0E5Igk33iiO','','admin@admin.com','86ed629d0fc67b65fa78a1f7b776dd9c56032abb',NULL,NULL,'G.WaoqYoZ/Zq6l6VddiHGe','0000-00-00 00:00:00','2018-09-28 17:16:31',1,'Administrator','utama','SPPD','0'),(7,'::1','member2','$2y$08$PR5Bshqw/ICo9/3X/9Sdn.DbdNP9D0efVQhpSxLfEEblKvbUV/DqG',NULL,'mara@gmail.com','073ac72599a6ffe3d2e31af2e804f448605f87ae',NULL,NULL,NULL,'2016-05-13 11:41:01','2016-05-20 11:30:08',0,'mara','andre','maracell','0898989'),(8,'::1','coba saja','$2y$08$rrhYyW215HV/K5WoH1E2CuH.6buDwe4EsQRYGyMqj641f6x15qm5q',NULL,'coba@gmail.com','219de4ce2713319e792fb6011ee6e2a87a88bd08',NULL,NULL,NULL,'2016-07-26 13:49:12',NULL,0,'coba','saja','coba saja',NULL);
+insert  into `tb_users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2y$08$5OZGvY1omkAbPfGLY5sN3eHNA7SyP72hnJhjWWc1Dr0E5Igk33iiO','','admin@admin.com','86ed629d0fc67b65fa78a1f7b776dd9c56032abb',NULL,NULL,'G.WaoqYoZ/Zq6l6VddiHGe','0000-00-00 00:00:00','2018-09-29 19:20:32',1,'Administrator','utama','SPPD','0'),(7,'::1','member2','$2y$08$PR5Bshqw/ICo9/3X/9Sdn.DbdNP9D0efVQhpSxLfEEblKvbUV/DqG',NULL,'mara@gmail.com','073ac72599a6ffe3d2e31af2e804f448605f87ae',NULL,NULL,NULL,'2016-05-13 11:41:01','2016-05-20 11:30:08',0,'mara','andre','maracell','0898989'),(8,'::1','coba saja','$2y$08$rrhYyW215HV/K5WoH1E2CuH.6buDwe4EsQRYGyMqj641f6x15qm5q',NULL,'coba@gmail.com','219de4ce2713319e792fb6011ee6e2a87a88bd08',NULL,NULL,NULL,'2016-07-26 13:49:12',NULL,0,'coba','saja','coba saja',NULL);
 
 /*Table structure for table `tb_users_groups` */
 

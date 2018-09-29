@@ -14,28 +14,33 @@
             <div class='col-xs-12'>
               <div class="box box-<?php echo $style_aksi ?>">
                 <div class="box-header with-border">
-                  <h3 class="box-title"><?php echo $label_aksi ?> Data</h3>
+                  <h3 class="box-title"><i class="<?php echo $icon ?>"></i> <b><?php echo $label_aksi ?></b> <small>Data</small></h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form action="<?php echo $action; ?>" method="post">
+                <form class="form-horizontal" action="<?php echo $action; ?>" method="post">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="sumberdanaKode">Kode</label>
-                      <input type="hidden" name="sumberdanaId" value="<?php echo $sumberdanaId; ?>" /> 
-                      <input type="text" class="form-control" name="sumberdanaKode" id="sumberdanaKode" placeholder="Kode Sumber Dana" value="<?php echo $sumberdanaKode; ?>" />
+                      <label for="sumberdanaKode" class="col-sm-2 control-label">Kode</label>
+                      <div class="col-sm-5">
+                        <input type="hidden" name="sumberdanaId" value="<?php echo $sumberdanaId; ?>" /> 
+                        <input type="text" class="form-control" name="sumberdanaKode" id="sumberdanaKode" placeholder="Kode Sumber Dana" value="<?php echo $sumberdanaKode; ?>" />
+                      </div>
                     </div>
                     <div class="form-group">
-                      <label for="sumberdanaNama">Nama</label>
-                      <input type="text" class="form-control" name="sumberdanaNama" id="sumberdanaNama" placeholder="Nama Sumber Dana" value="<?php echo $sumberdanaNama; ?>" />
+                      <label for="sumberdanaNama" class="col-sm-2 control-label">Nama</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" name="sumberdanaNama" id="sumberdanaNama" placeholder="Nama Sumber Dana" value="<?php echo $sumberdanaNama; ?>" />
+                      </div>
                     </div>
                   </div>
-                  <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button> 
-                <a href="<?php echo site_url('sumberdana') ?>" class="btn btn-warning"><i class="fa fa-reply-all"></i> Batal</a>
-              </div>
-            </form>
+                  <div class="box-footer">
+                    <div class="col-sm-10 col-sm-offset-2">
+                      <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button> 
+                      <a href="<?php echo site_url('sumberdana') ?>" class="btn btn-warning"><i class="fa fa-reply-all"></i> Batal</a>
+                    </div>
+                  </div>
+                </form>
           </div>
           </div><!-- /.row -->
         </section><!-- /.content -->

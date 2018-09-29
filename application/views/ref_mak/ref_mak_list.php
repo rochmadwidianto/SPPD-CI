@@ -15,8 +15,6 @@
               <div class='box'>
                 <div class='box-header with-border'>
                   <h3 class='box-title'>
-            		<?php echo anchor(site_url('mak/pdf'), '<i class="fa fa-file-pdf-o"></i> PDF', 'class="btn btn-primary btn-sm"'); ?>
-                    <?php echo anchor(site_url('mak/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?>
                     <?php echo anchor('mak/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?>
                 </h3>
                 <div class="box-tools pull-right">
@@ -47,8 +45,8 @@
             		    <td><?php echo $mak->makNama ?></td>
                         <td>
                         <?php 
-            			echo anchor(site_url('mak/read/'.$mak->makId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
-            			echo '  '; 
+            			// echo anchor(site_url('mak/read/'.$mak->makId),'<i class="fa fa-eye"></i>',array('data-toggle'=>'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
+            			// echo '  '; 
             			echo anchor(site_url('mak/update/'.$mak->makId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle'=>'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
             			echo '  '; 
             			echo anchor(site_url('mak/delete/'.$mak->makId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 

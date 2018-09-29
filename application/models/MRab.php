@@ -31,6 +31,7 @@ class MRab extends CI_Model
     function get_all()
     {
         $this->db->order_by($this->id, $this->order);
+        $this->db->join('ref_tahun_anggaran', 'thAnggaranId = rabThnAnggId');
         return $this->db->get($this->table)->result();
     }
 

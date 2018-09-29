@@ -45,8 +45,8 @@
             		    <td><?php echo $sumberdana->sumberdanaNama ?></td>
             		    <td align="center" nowrap>
                 			<?php 
-                			echo anchor(site_url('sumberdana/read/'.$sumberdana->sumberdanaId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
-                			echo '  '; 
+                			// echo anchor(site_url('sumberdana/read/'.$sumberdana->sumberdanaId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
+                			// echo '  '; 
                 			echo anchor(site_url('sumberdana/update/'.$sumberdana->sumberdanaId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle' => 'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
                 			echo '  '; 
                 			echo anchor(site_url('sumberdana/delete/'.$sumberdana->sumberdanaId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 

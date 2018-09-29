@@ -44,7 +44,7 @@
                                 } else {
                                     $class1 = "";
                                 }
-                                echo '<li class=' . $class1 . '>' . anchor($s->link, '<i class="' . $s->icon . '"></i>' . strtoupper($s->nama_menu)) . '</li>';
+                                echo '<li class=' . $class1 . '>' . anchor($s->link, '<i class="' . $s->icon . '"></i>' . $s->nama_menu) . '</li>';
                             }
                             echo "</ul>";
                             echo '</li>';
@@ -85,7 +85,7 @@
                                 } else {
                                     $class1 = "";
                                 }
-                                echo '<li class=' . $class1 . '>' . anchor($s->link, '<i class="' . $s->icon . '"></i>' . strtoupper($s->nama_menu)) . '</li>';
+                                echo '<li class=' . $class1 . '>' . anchor($s->link, '<i class="' . $s->icon . '"></i>' . $s->nama_menu) . '</li>';
                             }
                             echo "</ul>";
                             echo '</li>';
@@ -126,7 +126,7 @@
                                 } else {
                                     $class1 = "";
                                 }
-                                echo '<li class=' . $class1 . '>' . anchor($s->link, '<i class="' . $s->icon . '"></i>' . strtoupper($s->nama_menu)) . '</li>';
+                                echo '<li class=' . $class1 . '>' . anchor($s->link, '<i class="' . $s->icon . '"></i>' . $s->nama_menu) . '</li>';
                             }
                             echo "</ul>";
                             echo '</li>';
@@ -143,7 +143,6 @@
                     }
                 }
                 ?>
-
         </ul><!--/.nav-list-->             
     </section>
     <!-- /.sidebar -->

@@ -42,10 +42,10 @@ class Golongan extends CI_Controller
         $row = $this->MGolongan->get_by_id($id);
         if ($row) {
             $data = array(
-		'golonganId' => $row->golonganId,
-		'golonganKode' => $row->golonganKode,
-		'golonganNama' => $row->golonganNama,
-	    );
+        		'golonganId' => $row->golonganId,
+        		'golonganKode' => $row->golonganKode,
+        		'golonganNama' => $row->golonganNama,
+	       );
             $this->template->display('ref_golongan/ref_golongan_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -58,11 +58,12 @@ class Golongan extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('golongan/create_action'),
-	    'golonganId' => set_value('golonganId'),
-	    'golonganKode' => set_value('golonganKode'),
-	    'golonganNama' => set_value('golonganNama'),
-	);
+    	    'golonganId' => set_value('golonganId'),
+    	    'golonganKode' => set_value('golonganKode'),
+    	    'golonganNama' => set_value('golonganNama'),
+    	);
         $this->template->display('ref_golongan/ref_golongan_form', $data);
     }
     
@@ -74,9 +75,9 @@ class Golongan extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'golonganKode' => $this->input->post('golonganKode',TRUE),
-		'golonganNama' => $this->input->post('golonganNama',TRUE),
-	    );
+        		'golonganKode' => $this->input->post('golonganKode',TRUE),
+        		'golonganNama' => $this->input->post('golonganNama',TRUE),
+	        );
 
             $this->MGolongan->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -92,11 +93,12 @@ class Golongan extends CI_Controller
             $data = array(
                 'style_aksi' => 'warning',
                 'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('golongan/update_action'),
-		'golonganId' => set_value('golonganId', $row->golonganId),
-		'golonganKode' => set_value('golonganKode', $row->golonganKode),
-		'golonganNama' => set_value('golonganNama', $row->golonganNama),
-	    );
+        		'golonganId' => set_value('golonganId', $row->golonganId),
+        		'golonganKode' => set_value('golonganKode', $row->golonganKode),
+        		'golonganNama' => set_value('golonganNama', $row->golonganNama),
+	        );
             $this->template->display('ref_golongan/ref_golongan_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -112,9 +114,9 @@ class Golongan extends CI_Controller
             $this->update($this->input->post('golonganId', TRUE));
         } else {
             $data = array(
-		'golonganKode' => $this->input->post('golonganKode',TRUE),
-		'golonganNama' => $this->input->post('golonganNama',TRUE),
-	    );
+        		'golonganKode' => $this->input->post('golonganKode',TRUE),
+        		'golonganNama' => $this->input->post('golonganNama',TRUE),
+	        );
 
             $this->MGolongan->update($this->input->post('golonganId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');

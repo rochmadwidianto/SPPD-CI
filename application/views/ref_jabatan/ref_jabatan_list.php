@@ -15,9 +15,6 @@
               <div class='box'>
                 <div class='box-header with-border'>
                     <h3 class='box-title'>
-                        <!-- (jabatan) ini nanti akan menajdi nama controllernya -->
-                		<?php echo anchor(site_url('jabatan/pdf'), '<i class="fa fa-file-pdf-o"></i> PDF', 'class="btn btn-primary btn-sm"'); ?>  
-                        <?php echo anchor(site_url('jabatan/excel'), ' <i class="fa fa-file-excel-o"></i> Excel', 'class="btn btn-primary btn-sm"'); ?>  
                         <?php echo anchor('jabatan/create/',' <i class="fa fa-plus"></i> Tambah',array('class'=>'btn btn-success btn-sm'));?>
                     </h3>
                     <div class="box-tools pull-right">
@@ -40,7 +37,6 @@
             	    <tbody>
                         <?php
                         $start = 0;
-                        // $jabatan_data : ini juga diakses dari controller
                         foreach ($jabatan_data as $jabatan)
                         {
                             ?>
@@ -51,8 +47,8 @@
                         <td><?php echo $jabatan->jabatanKeterangan?></td>
             		    <td align="center" nowrap>
             			<?php 
-            			echo anchor(site_url('jabatan/read/'.$jabatan->jabatanId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
-            			echo '  '; 
+            			// echo anchor(site_url('jabatan/read/'.$jabatan->jabatanId),'<i class="fa fa-eye"></i>',array('data-toggle' => 'tooltip', 'title'=>'Detail','class'=>'btn btn-info btn-xs')); 
+            			// echo '  '; 
             			echo anchor(site_url('jabatan/update/'.$jabatan->jabatanId),'<i class="fa fa-pencil-square-o"></i>',array('data-toggle' => 'tooltip', 'title'=>'Ubah','class'=>'btn btn-warning btn-xs')); 
             			echo '  '; 
             			echo anchor(site_url('jabatan/delete/'.$jabatan->jabatanId),'<i class="fa fa-trash-o"></i>','data-toggle="tooltip" title="Hapus" class="btn btn-danger btn-xs" onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"'); 

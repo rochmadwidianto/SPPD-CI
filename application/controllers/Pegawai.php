@@ -42,13 +42,13 @@ class Pegawai extends CI_Controller
         $row = $this->MPegawai->get_by_id($id);
         if ($row) {
             $data = array(
-		'pegawaiId' => $row->pegawaiId,
-		'pegawaiNip' => $row->pegawaiNip,
-		'pegawaiNama' => $row->pegawaiNama,
-		'pegawaiPangkat' => $row->pegawaiPangkat,
-		'pegawaiJabatanId' => $row->pegawaiJabatanId,
-		'pegawaiGolonganId' => $row->pegawaiGolonganId,
-	    );
+        		'pegawaiId' => $row->pegawaiId,
+        		'pegawaiNip' => $row->pegawaiNip,
+        		'pegawaiNama' => $row->pegawaiNama,
+        		'pegawaiPangkat' => $row->pegawaiPangkat,
+        		'pegawaiJabatanId' => $row->pegawaiJabatanId,
+        		'pegawaiGolonganId' => $row->pegawaiGolonganId,
+	        );
             $this->template->display('ref_pegawai/ref_pegawai_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -62,14 +62,15 @@ class Pegawai extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('pegawai/create_action'),
-	    'pegawaiId' => set_value('pegawaiId'),
-	    'pegawaiNip' => set_value('pegawaiNip'),
-	    'pegawaiNama' => set_value('pegawaiNama'),
-	    'pegawaiPangkat' => set_value('pegawaiPangkat'),
-	    'pegawaiJabatanId' => set_value('pegawaiJabatanId'),
-	    'pegawaiGolonganId' => set_value('pegawaiGolonganId'),
-	);
+    	    'pegawaiId' => set_value('pegawaiId'),
+    	    'pegawaiNip' => set_value('pegawaiNip'),
+    	    'pegawaiNama' => set_value('pegawaiNama'),
+    	    'pegawaiPangkat' => set_value('pegawaiPangkat'),
+    	    'pegawaiJabatanId' => set_value('pegawaiJabatanId'),
+    	    'pegawaiGolonganId' => set_value('pegawaiGolonganId'),
+	    );
         $this->template->display('ref_pegawai/ref_pegawai_form', $data);
     }
     
@@ -82,12 +83,12 @@ class Pegawai extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'pegawaiNip' => $this->input->post('pegawaiNip',TRUE),
-		'pegawaiNama' => $this->input->post('pegawaiNama',TRUE),
-		'pegawaiPangkat' => $this->input->post('pegawaiPangkat',TRUE),
-		'pegawaiJabatanId' => $this->input->post('pegawaiJabatanId',TRUE),
-		'pegawaiGolonganId' => $this->input->post('pegawaiGolonganId',TRUE),
-	    );
+        		'pegawaiNip' => $this->input->post('pegawaiNip',TRUE),
+        		'pegawaiNama' => $this->input->post('pegawaiNama',TRUE),
+        		'pegawaiPangkat' => $this->input->post('pegawaiPangkat',TRUE),
+        		'pegawaiJabatanId' => $this->input->post('pegawaiJabatanId',TRUE),
+        		'pegawaiGolonganId' => $this->input->post('pegawaiGolonganId',TRUE),
+	        );
 
             $this->MPegawai->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -101,16 +102,17 @@ class Pegawai extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('pegawai/update_action'),
-		'pegawaiId' => set_value('pegawaiId', $row->pegawaiId),
-		'pegawaiNip' => set_value('pegawaiNip', $row->pegawaiNip),
-		'pegawaiNama' => set_value('pegawaiNama', $row->pegawaiNama),
-		'pegawaiPangkat' => set_value('pegawaiPangkat', $row->pegawaiPangkat),
-		'pegawaiJabatanId' => set_value('pegawaiJabatanId', $row->pegawaiJabatanId),
-		'pegawaiGolonganId' => set_value('pegawaiGolonganId', $row->pegawaiGolonganId),
-	    );
+        		'pegawaiId' => set_value('pegawaiId', $row->pegawaiId),
+        		'pegawaiNip' => set_value('pegawaiNip', $row->pegawaiNip),
+        		'pegawaiNama' => set_value('pegawaiNama', $row->pegawaiNama),
+        		'pegawaiPangkat' => set_value('pegawaiPangkat', $row->pegawaiPangkat),
+        		'pegawaiJabatanId' => set_value('pegawaiJabatanId', $row->pegawaiJabatanId),
+        		'pegawaiGolonganId' => set_value('pegawaiGolonganId', $row->pegawaiGolonganId),
+	        );
             $this->template->display('ref_pegawai/ref_pegawai_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -126,12 +128,12 @@ class Pegawai extends CI_Controller
             $this->update($this->input->post('pegawaiId', TRUE));
         } else {
             $data = array(
-		'pegawaiNip' => $this->input->post('pegawaiNip',TRUE),
-		'pegawaiNama' => $this->input->post('pegawaiNama',TRUE),
-		'pegawaiPangkat' => $this->input->post('pegawaiPangkat',TRUE),
-		'pegawaiJabatanId' => $this->input->post('pegawaiJabatanId',TRUE),
-		'pegawaiGolonganId' => $this->input->post('pegawaiGolonganId',TRUE),
-	    );
+        		'pegawaiNip' => $this->input->post('pegawaiNip',TRUE),
+        		'pegawaiNama' => $this->input->post('pegawaiNama',TRUE),
+        		'pegawaiPangkat' => $this->input->post('pegawaiPangkat',TRUE),
+        		'pegawaiJabatanId' => $this->input->post('pegawaiJabatanId',TRUE),
+        		'pegawaiGolonganId' => $this->input->post('pegawaiGolonganId',TRUE),
+	        );
 
             $this->MPegawai->update($this->input->post('pegawaiId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');

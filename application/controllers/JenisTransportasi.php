@@ -42,9 +42,9 @@ class JenisTransportasi extends CI_Controller
         $row = $this->MJenisTransportasi->get_by_id($id);
         if ($row) {
             $data = array(
-		'jenisTransportId' => $row->jenisTransportId,
-		'jenisTransportNama' => $row->jenisTransportNama,
-	    );
+        		'jenisTransportId' => $row->jenisTransportId,
+        		'jenisTransportNama' => $row->jenisTransportNama,
+	        );
             $this->template->display('ref_jenis_transportasi/ref_jenis_transportasi_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -57,10 +57,11 @@ class JenisTransportasi extends CI_Controller
         $data = array(
             'style_aksi' => 'success',
             'label_aksi' => 'Tambah',
+            'icon' => 'fa fa-plus-square-o',
             'action' => site_url('jenistransportasi/create_action'),
-	    'jenisTransportId' => set_value('jenisTransportId'),
-	    'jenisTransportNama' => set_value('jenisTransportNama'),
-	);
+    	    'jenisTransportId' => set_value('jenisTransportId'),
+    	    'jenisTransportNama' => set_value('jenisTransportNama'),
+	    );
         $this->template->display('ref_jenis_transportasi/ref_jenis_transportasi_form', $data);
     }
     
@@ -87,12 +88,13 @@ class JenisTransportasi extends CI_Controller
 
         if ($row) {
             $data = array(
-            'style_aksi' => 'warning',
-            'label_aksi' => 'Ubah',
+                'style_aksi' => 'warning',
+                'label_aksi' => 'Ubah',
+                'icon' => 'fa fa-pencil-square-o',
                 'action' => site_url('jenistransportasi/update_action'),
-		'jenisTransportId' => set_value('jenisTransportId', $row->jenisTransportId),
-		'jenisTransportNama' => set_value('jenisTransportNama', $row->jenisTransportNama),
-	    );
+        		'jenisTransportId' => set_value('jenisTransportId', $row->jenisTransportId),
+        		'jenisTransportNama' => set_value('jenisTransportNama', $row->jenisTransportNama),
+	        );
             $this->template->display('ref_jenis_transportasi/ref_jenis_transportasi_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -108,8 +110,8 @@ class JenisTransportasi extends CI_Controller
             $this->update($this->input->post('jenisTransportId', TRUE));
         } else {
             $data = array(
-		'jenisTransportNama' => $this->input->post('jenisTransportNama',TRUE),
-	    );
+		      'jenisTransportNama' => $this->input->post('jenisTransportNama',TRUE),
+	       );
 
             $this->MJenisTransportasi->update($this->input->post('jenisTransportId', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');

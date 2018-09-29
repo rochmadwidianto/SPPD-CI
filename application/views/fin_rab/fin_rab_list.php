@@ -30,7 +30,7 @@
                     <thead>
                         <tr>
                             <th width="40px">No</th>
-                		    <th>Tahun Anggaran</th>
+                		    <th width="100px">Tahun Anggaran</th>
                 		    <th>Kode</th>
                 		    <th>Nama</th>
                 		    <th>Nominal</th>
@@ -46,10 +46,10 @@
                             ?>
                             <tr>
             		    <td align="center"><?php echo ++$start ?></td>
-            		    <td><?php echo $rab->thnAnggId ?></td>
+            		    <td align="center"><?php echo $rab->thAnggaranNama ?></td>
             		    <td><?php echo $rab->rabKode ?></td>
             		    <td><?php echo $rab->rabNama ?></td>
-                        <td><?php echo $rab->rabNominal ?></td>
+                        <td align="right"><?php echo rupiah($rab->rabNominalTotal) ?></td>
                         <td><?php echo $rab->rabKeterangan ?></td>
             		    <!--<td><?php echo '<b>['.$c->golonganKode.']</b>  '.$c->golonganNama ?></td> -->
             		    <td align="center" nowrap>
