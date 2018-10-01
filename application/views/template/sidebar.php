@@ -8,8 +8,8 @@
                 <img src="<?php echo base_url('assets/img/avatar5.png'); ?>" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p>Welcome...</p>
-                <p><?php echo $this->session->userdata('nama_toko'); ?>  </p>
+                <p style="font-weight: normal;"><small>Selamat Datang, </small></p>
+                <p><small><?php echo $this->session->userdata('first_name'); ?></small></p>
             </div>
         </div>
 
@@ -17,7 +17,7 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header bg-blue-active">MAIN NAVIGATION</li>     
+            <li class="header bg-default-active">MAIN NAVIGATION</li>     
                 <?php
                 if ($this->ion_auth->is_admin()) {
                     $main = $this->db->get_where('tb_menu', array('parent' => 0, 'role' => 'Admin'));
@@ -60,7 +60,7 @@
                             </i>  <span class="treeview">' . strtoupper($m->nama_menu) . '</span>') . '</li>';
                         }
                     }
-                    echo '<li class="header bg-blue-active">ADMIN NAVIGATION</li> ';
+                    echo '<li class="header bg-default-active">ADMIN NAVIGATION</li> ';
                     $admin = $this->db->get_where('tb_menu', array('parent' => 0, 'role' => 'Administrator'));
                     foreach ($admin->result() as $m) {
                         // chek ada submenu atau tidak

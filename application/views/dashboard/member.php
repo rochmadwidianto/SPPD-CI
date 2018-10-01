@@ -18,12 +18,12 @@
                 <div class="inner">
                     <h3>
                         <?php
-                        foreach ($harga as $r) {
-                            echo "Rp " . rupiah($r->harga);
+                        foreach ($pegawai as $peg) {
+                            echo $peg->pegawai;
                         }
                         ?>
                     </h3>
-                    <p>Total Transaksi</p>
+                    <p>Total Pegawai</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>

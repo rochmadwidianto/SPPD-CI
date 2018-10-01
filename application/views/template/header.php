@@ -1,7 +1,7 @@
 <header class="main-header">
     <a href="<?php echo site_url('dashboard'); ?> " class="logo">
         <span class="logo-mini"><b>SPPD</b></span>
-        <span class="logo-lg"><b>SPPD</b></span>
+        <span class="logo-lg"><i><small>Sistem Informasi <b>SPPD</b></small></i></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -14,7 +14,7 @@
         </a>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <li class="dropdown messages-menu">
+                <li class="dropdown messages-menu hidden-xs">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-calendar"></i>
                         <span> <?php echo tanggal_new(); ?></span>

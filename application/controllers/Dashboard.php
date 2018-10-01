@@ -27,6 +27,8 @@ class Dashboard extends CI_Controller {
         $data['title'] = "Home";
         $uid = $this->session->userdata('user_id');
         if ($this->ion_auth->is_admin()) {
+            $data['pegawai'] = $this->db->query("SELECT COUNT(pegawaiId) AS pegawai FROM ref_pegawai")->result();
+
             $data['harga'] = $this->db->query("SELECT SUM(tb_harga.harga) AS harga FROM tb_transaksi,tb_harga WHERE tb_transaksi.id_harga=tb_harga.id_harga AND tb_transaksi.uid=$uid ")->result();
             $data['hutang'] = $this->db->query("SELECT SUM(tb_harga.harga) AS harga FROM tb_transaksi,tb_harga WHERE tb_transaksi.id_harga=tb_harga.id_harga AND tb_transaksi.status='HUTANG' AND tb_transaksi.uid=$uid ")->result();
             $data['lunas'] = $this->db->query("SELECT SUM(tb_harga.harga) AS harga FROM tb_transaksi,tb_harga WHERE tb_transaksi.id_harga=tb_harga.id_harga AND tb_transaksi.status='LUNAS' AND tb_transaksi.uid=$uid ")->result();
@@ -34,6 +36,8 @@ class Dashboard extends CI_Controller {
             $data['transaksi'] = $this->Transaksi_model->get_last_transaksi();
             $this->template->display('dashboard/admin', $data);
         } else {
+            $data['pegawai'] = $this->db->query("SELECT COUNT(pegawaiId) AS pegawai FROM ref_pegawai")->result();
+
             $data['harga'] = $this->db->query("SELECT SUM(tb_harga.harga) AS harga FROM tb_transaksi,tb_harga WHERE tb_transaksi.id_harga=tb_harga.id_harga AND tb_transaksi.uid=$uid ")->result();
             $data['hutang'] = $this->db->query("SELECT SUM(tb_harga.harga) AS harga FROM tb_transaksi,tb_harga WHERE tb_transaksi.id_harga=tb_harga.id_harga AND tb_transaksi.status='HUTANG' AND tb_transaksi.uid=$uid ")->result();
             $data['lunas'] = $this->db->query("SELECT SUM(tb_harga.harga) AS harga FROM tb_transaksi,tb_harga WHERE tb_transaksi.id_harga=tb_harga.id_harga AND tb_transaksi.status='LUNAS' AND tb_transaksi.uid=$uid ")->result();

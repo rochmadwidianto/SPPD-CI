@@ -18,17 +18,17 @@
                 <div class="inner">
                     <h3>
                         <?php
-                        foreach ($harga as $r) {
-                            echo "Rp " . rupiah($r->harga);
+                        foreach ($pegawai as $peg) {
+                            echo $peg->pegawai;
                         }
                         ?>
                     </h3>
-                    <p>Total Transaksi</p>
+                    <p>Total Pegawai</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-bag"></i>
+                    <i class="fa fa-users"></i>
                 </div>
-                <a href="<?php echo base_url('transaksi'); ?>" class="small-box-footer">More Detail <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('pegawai'); ?>" class="small-box-footer">More Detail <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
